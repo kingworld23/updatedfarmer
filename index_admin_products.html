@@ -1,0 +1,2931 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmers Direct Online Market | Kisan Se Seedha Grahak Tak (₹ INR)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            hindi: ['"Rozha One"', 'serif'],
+          },
+          colors: {
+            kisan: {
+              50: '#f2fbf4',
+              100: '#e1f7e6',
+              200: '#c5eed0',
+              500: '#16a34a',
+              600: '#15803d',
+              700: '#166534',
+              800: '#14532d',
+              900: '#0d381e',
+            },
+            saffron: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            earth: {
+              50: '#faf6f0',
+              100: '#f4ede1',
+              700: '#8c531b',
+              900: '#452308',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #f7faf7;
+      color: #1f2937;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0d381e 0%, #166534 50%, #15803d 85%, #b45309 100%);
+    }
+    .nav-blur {
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.94);
+    }
+    .card-hover {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 30px -8px rgba(22, 101, 52, 0.15);
+    }
+    .kisan-badge {
+      background: linear-gradient(90deg, #f59e0b 0%, #15803d 100%);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #86efac;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f0fdf4;
+    }
+    .toast-anim {
+      animation: slideInToast 0.35s ease-out forwards;
+    }
+    @keyframes slideInToast {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 32s linear infinite;
+    }
+    .ticker-wrap:hover .ticker-content {
+      animation-play-state: paused;
+    }
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+  <!-- Top Mandi Price Ticker (Live APMC Simulation in ₹) -->
+  <div class="bg-gradient-to-r from-emerald-900 via-stone-900 to-kisan-900 text-white text-xs font-medium py-2 px-3 border-b border-emerald-700/40 select-none">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-stone-950 uppercase tracking-wider">
+          <i class="fa-solid fa-chart-line mr-1"></i> Live Mandi Bhav
+        </span>
+        <span class="hidden md:inline text-emerald-300 font-semibold text-[11px]">All-India APMC Spot Rates:</span>
+      </div>
+
+      <div class="ticker-wrap flex-1 text-emerald-100">
+        <div class="ticker-content space-x-6 text-[12px]">
+          <span>🌾 Sharbati Wheat (M.P.): <b class="text-amber-300">₹2,840/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🍚 1121 Basmati Paddy (Punjab): <b class="text-amber-300">₹4,350/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🥔 Jyoti Potato (Agra): <b class="text-amber-300">₹1,420/qtl</b> <i class="fa-solid fa-arrow-trend-down text-red-400"></i></span>
+          <span>🧅 Nashik Red Onion (Maharashtra): <b class="text-amber-300">₹2,150/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🍅 Hybrid Tomato (Kolar): <b class="text-amber-300">₹1,780/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🌿 Mustard Seeds (Rajasthan): <b class="text-amber-300">₹5,420/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🥛 A2 Desi Cow Milk (Dairy Farm): <b class="text-amber-300">₹68/L</b> <i class="fa-solid fa-equals text-blue-300"></i></span>
+          <span>🌱 Urea (Subsidized 45kg bag): <b class="text-amber-300">₹266.50</b></span>
+          <!-- Duplicate for seamless scroll -->
+          <span>🌾 Sharbati Wheat (M.P.): <b class="text-amber-300">₹2,840/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🍚 1121 Basmati Paddy (Punjab): <b class="text-amber-300">₹4,350/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+          <span>🥔 Jyoti Potato (Agra): <b class="text-amber-300">₹1,420/qtl</b> <i class="fa-solid fa-arrow-trend-down text-red-400"></i></span>
+          <span>🧅 Nashik Red Onion (Maharashtra): <b class="text-amber-300">₹2,150/qtl</b> <i class="fa-solid fa-arrow-trend-up text-green-400"></i></span>
+        </div>
+      </div>
+
+      <div class="hidden sm:flex items-center gap-3 text-xs text-stone-300">
+        <span class="flex items-center gap-1"><i class="fa-solid fa-phone text-amber-400"></i> Kisan Toll-Free: <strong>1800-180-1551</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="sticky top-0 z-40 nav-blur border-b border-emerald-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & Tagline -->
+        <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-green-700 via-emerald-600 to-amber-500 p-0.5 shadow-md flex items-center justify-center">
+            <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center text-kisan-700">
+              <i class="fa-solid fa-seedling text-2xl text-emerald-600"></i>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xl sm:text-2xl font-extrabold text-stone-900 tracking-tight">Farmers<span class="text-emerald-600">Direct</span></span>
+              <span class="text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-300">Bharat Mandi</span>
+            </div>
+            <p class="text-xs text-stone-500 font-medium hidden sm:block">किसान से सीधे आपके घर तक • Direct Farmers Market</p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <button onclick="navigateTo('home')" id="nav-home" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition text-emerald-700 bg-emerald-50">
+            <i class="fa-solid fa-store mr-1.5 text-emerald-600"></i> Mandi Bazaar
+          </button>
+          <button onclick="navigateTo('fertilizer')" id="nav-fertilizer" class="px-3.5 py-2 rounded-xl text-sm font-medium text-stone-700 hover:text-emerald-700 hover:bg-emerald-50 transition">
+            <i class="fa-solid fa-flask-vial mr-1.5 text-amber-600"></i> Krishi Poshan & Fertilizers
+          </button>
+          <button onclick="navigateTo('sell')" id="nav-sell" class="px-3.5 py-2 rounded-xl text-sm font-medium text-stone-700 hover:text-emerald-700 hover:bg-emerald-50 transition">
+            <i class="fa-solid fa-hand-holding-dollar mr-1.5 text-emerald-600"></i> Kisan Listing Portal
+          </button>
+          <button onclick="navigateTo('about')" id="nav-about" class="px-3.5 py-2 rounded-xl text-sm font-medium text-stone-700 hover:text-emerald-700 hover:bg-emerald-50 transition">
+            <i class="fa-solid fa-shield-halved mr-1.5 text-stone-500"></i> About Direct Trade
+          </button>
+        </nav>
+
+        <!-- Right Side: Search, Cart, Auth & Demo Toggle -->
+        <div class="flex items-center gap-2.5 sm:gap-4">
+          
+          <!-- Search trigger -->
+          <button onclick="toggleSearch()" class="p-2.5 rounded-xl text-stone-600 hover:text-emerald-700 hover:bg-emerald-50 transition" title="Search crops & products">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+          </button>
+
+          <!-- Shopping Cart trigger -->
+          <button onclick="toggleCart()" class="relative p-2.5 rounded-xl text-stone-600 hover:text-emerald-700 hover:bg-emerald-50 transition" title="Kisan Basket">
+            <i class="fa-solid fa-basket-shopping text-lg text-emerald-700"></i>
+            <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-amber-500 text-stone-900 text-xs font-black rounded-full h-5 w-5 flex items-center justify-center border-2 border-white shadow">0</span>
+          </button>
+
+          <!-- Admin product management entry point -->
+          <button id="nav-admin" onclick="openAdminPanel()" class="px-3 py-2 rounded-xl text-xs sm:text-sm font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition" title="Admin product management">
+            <i class="fa-solid fa-shield-halved mr-1"></i><span class="hidden sm:inline">Admin</span>
+          </button>
+
+          <!-- User State Section (Guest / Farmer / Buyer) -->
+          <div id="authNavContainer" class="flex items-center gap-2">
+            <!-- Non-logged in state -->
+            <div id="guestButtons" class="flex items-center gap-2">
+              <button onclick="openAuthModal('login')" class="hidden sm:inline-flex items-center px-4 py-2 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 rounded-xl text-sm font-bold transition">
+                <i class="fa-regular fa-user mr-1.5"></i> Login
+              </button>
+              <button onclick="openAuthModal('register')" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white rounded-xl text-sm font-bold shadow-md shadow-emerald-700/20 transition">
+                Register Free
+              </button>
+            </div>
+
+            <!-- Logged in state dropdown trigger -->
+            <div id="userProfileButton" class="hidden relative">
+              <button onclick="toggleUserDropdown()" class="flex items-center gap-2.5 bg-white border border-stone-200 pl-2 pr-3 py-1.5 rounded-2xl hover:border-emerald-500 shadow-sm transition">
+                <div id="userAvatarBadge" class="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow">
+                  u
+                </div>
+                <div class="text-left hidden lg:block">
+                  <div id="userNavName" class="text-xs font-bold text-stone-800 leading-tight">user</div>
+                  <div id="userNavRole" class="text-[10px] font-semibold text-emerald-700 uppercase">Kisan (Farmer)</div>
+                </div>
+                <i class="fa-solid fa-chevron-down text-[10px] text-stone-400"></i>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <div id="userDropdownMenu" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-stone-100 py-2 z-50">
+                <div class="px-4 py-2.5 border-b border-stone-100">
+                  <p class="text-xs text-stone-400 font-medium">Logged in as</p>
+                  <p id="dropdownUserEmail" class="text-xs font-bold text-stone-800 truncate">not signed in</p>
+                </div>
+                <button onclick="navigateTo('dashboard'); toggleUserDropdown()" class="w-full text-left px-4 py-2.5 text-xs font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-2">
+                  <i class="fa-solid fa-gauge-high text-emerald-600 w-4"></i> Dashboard Portal
+                </button>
+                <button onclick="navigateTo('sell'); toggleUserDropdown()" id="dropdownSellBtn" class="w-full text-left px-4 py-2.5 text-xs font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-2">
+                  <i class="fa-solid fa-plus-circle text-amber-500 w-4"></i> Add Crop / Produce
+                </button>
+                <div class="border-t border-stone-100 my-1"></div>
+                <button onclick="logoutUser()" class="w-full text-left px-4 py-2.5 text-xs font-bold text-red-600 hover:bg-red-50 flex items-center gap-2">
+                  <i class="fa-solid fa-arrow-right-from-bracket w-4"></i> Logout
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile Hamburger -->
+          <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-stone-700 hover:bg-emerald-50">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expandable Search Bar -->
+    <div id="searchBarDropdown" class="hidden bg-white border-t border-emerald-100 py-3 px-4 shadow-md transition-all">
+      <div class="max-w-4xl mx-auto flex flex-col sm:flex-row gap-2">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-emerald-600"></i>
+          <input 
+            type="text" 
+            id="mainSearchInput"
+            oninput="handleSearchFilter()" 
+            placeholder="Search by crop name (e.g. Basmati Rice, Alphonso, Desi Ghee, Urea, Tomato) or State..."
+            class="w-full pl-11 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+        </div>
+        <select id="stateFilterSelect" onchange="handleSearchFilter()" class="bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-medium text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <option value="all">All States & Mandis (पूरा भारत)</option>
+          <option value="Punjab">Punjab (पंजाब)</option>
+          <option value="Maharashtra">Maharashtra (महाराष्ट्र)</option>
+          <option value="Uttar Pradesh">Uttar Pradesh (उत्तर प्रदेश)</option>
+          <option value="Madhya Pradesh">Madhya Pradesh (मध्य प्रदेश)</option>
+          <option value="Karnataka">Karnataka (कर्नाटक)</option>
+          <option value="Himachal Pradesh">Himachal Pradesh (हिमाचल)</option>
+          <option value="Gujarat">Gujarat (गुजरात)</option>
+          <option value="Kerala">Kerala (केरल)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 hidden md:hidden">
+    <div class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+    <div class="fixed top-0 bottom-0 right-0 w-80 bg-white p-6 shadow-2xl flex flex-col justify-between z-10">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-seedling text-2xl text-emerald-600"></i>
+            <span class="font-black text-lg text-stone-900">Farmers<span class="text-emerald-600">Direct</span></span>
+          </div>
+          <button onclick="toggleMobileMenu()" class="p-2 text-stone-400 hover:text-stone-700">
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+        </div>
+
+        <div class="mt-6 space-y-2">
+          <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-3">
+            <i class="fa-solid fa-store text-emerald-600"></i> Mandi Bazaar (Market)
+          </button>
+          <button onclick="navigateTo('fertilizer'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-3">
+            <i class="fa-solid fa-flask-vial text-amber-500"></i> Fertilizers & Advisory
+          </button>
+          <button onclick="navigateTo('sell'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-3">
+            <i class="fa-solid fa-hand-holding-dollar text-emerald-600"></i> Kisan Direct Listing
+          </button>
+          <button onclick="navigateTo('dashboard'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-3">
+            <i class="fa-solid fa-gauge text-stone-500"></i> My Account & Orders
+          </button>
+          <button onclick="navigateTo('about'); toggleMobileMenu()" class="w-full text-left px-4 py-3 rounded-xl font-bold text-stone-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-3">
+            <i class="fa-solid fa-circle-info text-stone-400"></i> About Bharat Direct
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Demo Account Switcher on Mobile -->
+      <div class="pt-4 border-t border-stone-100">
+        <p class="text-[11px] font-bold text-stone-400 uppercase tracking-wider mb-2">⚡ Quick 1-Click Demo Login</p>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="quickDemoLogin('farmer'); toggleMobileMenu()" class="text-xs py-2 px-2 bg-emerald-100 text-emerald-800 rounded-lg font-bold hover:bg-emerald-200">
+            👨‍🌾 As Farmer
+          </button>
+          <button onclick="quickDemoLogin('buyer'); toggleMobileMenu()" class="text-xs py-2 px-2 bg-amber-100 text-amber-900 rounded-lg font-bold hover:bg-amber-200">
+            🛒 As Buyer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar Drawer -->
+  <div id="cartModal" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm" onclick="toggleCart()"></div>
+    <div class="fixed top-0 bottom-0 right-0 w-full max-w-md bg-white shadow-2xl flex flex-col z-10">
+      
+      <!-- Cart Header -->
+      <div class="p-5 bg-stone-900 text-white flex items-center justify-between border-b border-stone-800">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base">Kisan Tokri (Shopping Basket)</h3>
+            <p class="text-xs text-emerald-300">Direct From Indian Farmers</p>
+          </div>
+        </div>
+        <button onclick="toggleCart()" class="text-stone-400 hover:text-white text-lg p-1">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Cart Items List -->
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3 custom-scroll">
+        <!-- Rendered dynamically via JS -->
+      </div>
+
+      <!-- Cart Footer Summary -->
+      <div class="p-5 border-t border-stone-200 bg-stone-50">
+        <div class="space-y-2 mb-4 text-sm text-stone-600">
+          <div class="flex justify-between">
+            <span>Subtotal (कच्ची रसीद):</span>
+            <span id="cartSubtotal" class="font-semibold text-stone-900">₹0</span>
+          </div>
+          <div class="flex justify-between text-xs text-emerald-700">
+            <span><span><i class="fa-solid fa-handshake mr-1"></i> Middleman Commission (0%):</span></span>
+            <span class="font-bold">SAVED ₹0</span>
+          </div>
+          <div class="flex justify-between text-xs text-stone-500">
+            <span>Direct Mandi Transport:</span>
+            <span class="font-medium text-stone-800" id="cartTransport">₹40 (Flat)</span>
+          </div>
+          <div class="border-t border-stone-200 pt-2 flex justify-between items-baseline text-base font-extrabold text-stone-900">
+            <span>Total Payable:</span>
+            <span id="cartGrandTotal" class="text-2xl text-emerald-700 font-black">₹0</span>
+          </div>
+        </div>
+
+        <!-- Checkout Actions -->
+        <div class="space-y-2">
+         <button
+            id="payNowButton"
+            onclick="startRazorpayPayment()"
+            class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-600 to-kisan-700 hover:from-emerald-700 hover:to-kisan-800 text-white font-bold rounded-xl shadow-lg shadow-emerald-700/20 flex items-center justify-center gap-2 transition"
+          >
+            <span id="payNowButtonText">Pay Securely with UPI / Card</span>
+            <i class="fa-solid fa-lock"></i>
+          </button>
+          <p class="text-[11px] text-center text-stone-500">
+            <i class="fa-solid fa-shield-check text-emerald-600 mr-1"></i> 100% Direct Farmer Payment Guarantee (₹ INR)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION MODAL (Farmer & Buyer Login/Signup) -->
+  <div id="authModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-stone-950/70 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+    
+    <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden border border-stone-200 z-10 animate-scale">
+      <!-- Modal Header Banner -->
+      <div class="bg-gradient-to-r from-kisan-900 via-emerald-800 to-kisan-700 p-6 text-white relative">
+        <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-emerald-200 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold mb-2">
+          <i class="fa-solid fa-tractor mr-1"></i> Krishi e-Market Auth
+        </div>
+        <h2 id="modalAuthHeader" class="text-2xl font-black">Kisan & Vyapari Portal</h2>
+        <p id="modalAuthSubtitle" class="text-xs text-emerald-200 mt-0.5">Direct Farm Trade Account • 100% Free Registration</p>
+      </div>
+
+      <!-- Quick Demo Switcher within Modal -->
+      <div class="bg-emerald-50/70 p-3 border-b border-emerald-100 flex items-center justify-between text-xs">
+        <span class="font-semibold text-emerald-900"><i class="fa-solid fa-bolt text-amber-500 mr-1"></i> Try Instant Demo Login:</span>
+        <div class="flex gap-2">
+          <button onclick="fillDemoCredentials('farmer')" class="px-2.5 py-1 bg-white border border-emerald-300 rounded-lg font-bold text-emerald-800 hover:bg-emerald-100 transition shadow-sm">
+            Farmer Demo
+          </button>
+          <button onclick="fillDemoCredentials('buyer')" class="px-2.5 py-1 bg-white border border-amber-300 rounded-lg font-bold text-amber-900 hover:bg-amber-100 transition shadow-sm">
+            Buyer Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="flex border-b border-stone-200">
+        <button id="authTabLogin" onclick="setAuthTab('login')" class="flex-1 py-3 text-sm font-bold text-center border-b-2 border-emerald-600 text-emerald-700 transition">
+          <i class="fa-solid fa-right-to-bracket mr-1.5"></i> Login (प्रवेश करें)
+        </button>
+        <button id="authTabRegister" onclick="setAuthTab('register')" class="flex-1 py-3 text-sm font-bold text-center border-b-2 border-transparent text-stone-500 hover:text-stone-800 transition">
+          <i class="fa-solid fa-user-plus mr-1.5"></i> New Account (खाता बनाएं)
+        </button>
+      </div>
+
+      <div class="p-6">
+        <!-- Login Form -->
+        <form id="formLogin" onsubmit="handleUserLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Select Profile Type (प्रोफाइल प्रकार)</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-stone-200 hover:border-emerald-500 cursor-pointer text-xs font-bold text-stone-800 bg-stone-50">
+                <input type="radio" name="loginUserRole" value="farmer" checked class="text-emerald-600 focus:ring-emerald-500">
+                <span>👨‍🌾 Kisan / Farmer</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl border border-stone-200 hover:border-emerald-500 cursor-pointer text-xs font-bold text-stone-800 bg-stone-50">
+                <input type="radio" name="loginUserRole" value="buyer" class="text-emerald-600 focus:ring-emerald-500">
+                <span>🛒 Buyer / Vyapari</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Mobile No. or Email ID</label>
+            <div class="relative">
+              <i class="fa-regular fa-envelope absolute left-3.5 top-3 text-stone-400"></i>
+              <input type="text" id="loginIdentifier" required placeholder="e.g. 9876543210 or kisan@gmail.com" class="w-full pl-10 pr-3 py-2.5 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Password (पासवर्ड)</label>
+            <div class="relative">
+              <i class="fa-solid fa-lock absolute left-3.5 top-3 text-stone-400"></i>
+              <input type="password" id="loginPass" required placeholder="••••••••" class="w-full pl-10 pr-3 py-2.5 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-bold rounded-xl shadow hover:from-emerald-700 hover:to-emerald-800 transition">
+            Login to Dashboard
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="formRegister" onsubmit="handleUserRegister(event)" class="space-y-3.5 hidden">
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">I want to register as:</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center gap-2 p-2 rounded-xl border border-stone-200 cursor-pointer text-xs font-bold bg-stone-50">
+                <input type="radio" name="regUserRole" value="farmer" checked onchange="toggleFarmFields(true)" class="text-emerald-600">
+                <span>👨‍🌾 Kisan (Farmer)</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-xl border border-stone-200 cursor-pointer text-xs font-bold bg-stone-50">
+                <input type="radio" name="regUserRole" value="buyer" onchange="toggleFarmFields(false)" class="text-emerald-600">
+                <span>🛒 Grahak / Bulk Buyer</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-stone-700 mb-1">Full Name (पूरा नाम)</label>
+              <input type="text" id="regName" required placeholder="e.g. Your Full Name" class="w-full px-3 py-2 text-xs bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-stone-700 mb-1">WhatsApp / Phone No.</label>
+              <input type="tel" id="regPhone" required placeholder="+91 9876543210" class="w-full px-3 py-2 text-xs bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-stone-700 mb-1">Email ID</label>
+            <input type="email" id="regEmail" required placeholder="farmer@kisanmail.in" class="w-full px-3 py-2 text-xs bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+
+          <div id="farmSpecificFields" class="grid grid-cols-2 gap-3 bg-emerald-50/60 p-2.5 rounded-xl border border-emerald-200/60">
+            <div>
+              <label class="block text-[11px] font-bold text-emerald-900 mb-1">State / Mandi Hub</label>
+              <select id="regState" class="w-full px-2.5 py-1.5 text-xs bg-white border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="Punjab">Punjab</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Kerala">Kerala</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-emerald-900 mb-1">Village / Tehsil / District</label>
+              <input type="text" id="regVillage" placeholder="e.g. Khanna, Ludhiana" class="w-full px-2.5 py-1.5 text-xs bg-white border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-stone-700 mb-1">Create Password</label>
+            <input type="password" id="regPassword" required placeholder="Minimum 6 characters" class="w-full px-3 py-2 text-xs bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+          </div>
+
+          <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-black text-sm rounded-xl shadow transition">
+            Create Kisan / Buyer Account (रजिस्टर करें)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN DYNAMIC CONTENT CONTAINER -->
+  <main class="flex-1">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: HOME / MARKETPLACE VIEW (MANDI)   -->
+    <!-- ========================================== -->
+    <section id="view-home" class="view-panel">
+      
+      <!-- HERO BANNER -->
+      <div class="hero-gradient text-white pt-10 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-5">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-200 text-xs font-bold">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                100% Direct Farmer-to-Consumer Indian Marketplace
+              </div>
+              
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                Fresh Produce Directly From <span class="text-amber-400 underline decoration-emerald-500 decoration-wavy">Indian Kisans</span> at Fair ₹ Prices.
+              </h1>
+              
+              <p class="text-stone-200 text-sm sm:text-base max-w-2xl leading-relaxed">
+                Empowering India's farmers by eliminating middlemen. Buy seasonal fruits, indigenous grains, farm-fresh vegetables, organic dairy, and learn optimal soil fertilization techniques.
+              </p>
+
+              <!-- Quick CTA Buttons -->
+              <div class="flex flex-wrap gap-3 pt-2">
+                <a href="#productsCatalog" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-extrabold rounded-xl shadow-lg shadow-amber-500/30 text-sm transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                  <i class="fa-solid fa-basket-shopping"></i> Browse Produce in ₹ INR
+                </a>
+                <button onclick="navigateTo('sell')" class="px-6 py-3.5 bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold rounded-xl text-sm transition flex items-center gap-2">
+                  <i class="fa-solid fa-tractor text-amber-300"></i> I am a Farmer (फसल बेचें)
+                </button>
+                <button onclick="navigateTo('fertilizer')" class="px-5 py-3.5 bg-emerald-800/80 hover:bg-emerald-800 text-emerald-100 font-bold rounded-xl text-sm border border-emerald-600/50 flex items-center gap-2">
+                  <i class="fa-solid fa-flask text-amber-400"></i> Fertilizer Guide
+                </button>
+              </div>
+
+              <!-- Indian Market Trust Indicators -->
+              <div class="grid grid-cols-3 gap-4 pt-4 border-t border-emerald-700/40 max-w-lg text-xs">
+                <div>
+                  <p class="text-lg font-black text-amber-300">₹0 Fee</p>
+                  <p class="text-stone-300 text-[11px]">Zero Middleman Cut</p>
+                </div>
+                <div>
+                  <p class="text-lg font-black text-emerald-300">28+ States</p>
+                  <p class="text-stone-300 text-[11px]">All-India Farm Reach</p>
+                </div>
+                <div>
+                  <p class="text-lg font-black text-amber-300">100% Genuine</p>
+                  <p class="text-stone-300 text-[11px]">APMC & Direct Verified</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Interactive Feature Box: Direct Kisan Spotlight -->
+            <div class="lg:col-span-5">
+              <div class="bg-white/95 backdrop-blur rounded-3xl p-6 shadow-2xl text-stone-900 border border-emerald-200/50">
+                <div class="flex items-center justify-between pb-3 border-b border-stone-100">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">🌾</span>
+                    <span class="font-extrabold text-sm text-stone-900">Featured Harvest of the Day</span>
+                  </div>
+                  <span class="text-[11px] font-bold bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Punjab APMC</span>
+                </div>
+
+                <div class="mt-4 flex gap-4 items-center">
+                  <div class="w-20 h-20 bg-amber-50 rounded-2xl flex items-center justify-center text-4xl shadow-inner border border-amber-100 flex-shrink-0">
+                    🌾
+                  </div>
+                  <div>
+                    <h4 class="font-black text-base text-stone-900">Organic Sharbati Gehu (Wheat)</h4>
+                    <p class="text-xs text-stone-500"><i class="fa-solid fa-location-dot text-emerald-600 mr-1"></i> Sehore / M.P. Harvested 4 days ago</p>
+                    <div class="mt-1 flex items-baseline gap-2">
+                      <span class="text-xl font-black text-emerald-700">₹42 <span class="text-xs font-medium text-stone-500">/ kg (₹4,200/qtl)</span></span>
+                      <span class="text-xs text-stone-400 line-through">₹58/kg in Retail</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-stone-50 rounded-2xl border border-stone-200/60 text-xs text-stone-600 space-y-1">
+                  <div class="flex justify-between">
+                    <span>Farmer:</span>
+                    <strong class="text-stone-900">Sardar Gurpreet Singh</strong>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Soil & Fertilization:</span>
+                    <span class="text-emerald-700 font-semibold">100% Gobar Khad & Neem Cake</span>
+                  </div>
+                </div>
+
+                <button onclick="quickAddProduce(3)" class="mt-4 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition shadow flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-cart-plus"></i> Add Sharbati Wheat to Tokri (₹42/kg)
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Category Filters Section -->
+      <div id="productsCatalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+        <div class="bg-white rounded-2xl p-4 shadow-lg border border-emerald-100 flex items-center gap-2 overflow-x-auto custom-scroll">
+          <button onclick="filterCategory('all')" class="cat-pill active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white flex-shrink-0 shadow transition">
+            🌟 Sabhi Utpad (All Products)
+          </button>
+          <button onclick="filterCategory('grains')" class="cat-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-stone-100 text-stone-700 hover:bg-emerald-50 flex-shrink-0 transition">
+            🌾 Anaj & Dal (Grains & Pulses)
+          </button>
+          <button onclick="filterCategory('vegetables')" class="cat-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-stone-100 text-stone-700 hover:bg-emerald-50 flex-shrink-0 transition">
+            🥬 Sabziyan (Fresh Vegetables)
+          </button>
+          <button onclick="filterCategory('fruits')" class="cat-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-stone-100 text-stone-700 hover:bg-emerald-50 flex-shrink-0 transition">
+            🍎 Taaza Phal (Fresh Fruits)
+          </button>
+          <button onclick="filterCategory('dairy')" class="cat-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-stone-100 text-stone-700 hover:bg-emerald-50 flex-shrink-0 transition">
+            🥛 Desi Dairy & Ghee
+          </button>
+          <button onclick="filterCategory('fertilizers')" class="cat-pill px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-stone-100 text-stone-700 hover:bg-emerald-50 flex-shrink-0 transition">
+            🌱 Khad & Fertilizers
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN PRODUCT GRID -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 gap-3">
+          <div>
+            <h2 class="text-2xl font-black text-stone-900">Direct From Farm Listings (ताज़ा उपज)</h2>
+            <p class="text-xs sm:text-sm text-stone-500">Every purchase directly credits the Indian Kisan's bank account with 0 middleman commission.</p>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-stone-500">Sort by:</span>
+            <select id="sortProduceSelect" onchange="handleProduceSort()" class="bg-white border border-stone-200 text-xs font-semibold rounded-lg px-2.5 py-1.5 text-stone-700 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+              <option value="featured">Featured & Fresh</option>
+              <option value="price-low">Price: Low to High (₹)</option>
+              <option value="price-high">Price: High to Low (₹)</option>
+              <option value="stock">High Stock Available</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Cards Container -->
+        <div id="productGridCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Dynamic Products from JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyCatalogState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-stone-200 p-8">
+          <i class="fa-solid fa-seedling text-5xl text-stone-300 mb-3"></i>
+          <h3 class="text-lg font-bold text-stone-700">No crop found matching your search</h3>
+          <p class="text-xs text-stone-500 mt-1">Try changing category filter or state keywords (e.g. Rice, Mango, Punjab, Paneer)</p>
+          <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-emerald-600 text-white text-xs font-bold rounded-xl">
+            Reset Filters
+          </button>
+        </div>
+      </section>
+
+      <!-- KRISHI FERTILIZER BANNER PROMO -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="bg-gradient-to-br from-stone-900 via-emerald-950 to-stone-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl border border-emerald-800/40">
+          <div class="grid md:grid-cols-2 gap-8 items-center relative z-10">
+            <div class="space-y-4">
+              <span class="px-3 py-1 bg-amber-500 text-stone-950 text-xs font-black rounded-full uppercase">Kisan Knowledge Hub</span>
+              <h3 class="text-2xl sm:text-4xl font-black leading-tight">Need expert guidance on NPK Fertilizers & Soil Health?</h3>
+              <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
+                Learn scientific fertilization for Indian Kharif and Rabi crops. Calculate precise dosage for Urea, DAP, MOP, SSP, and Organic Jeevamrut to maximize crop yield without harming soil fertility.
+              </p>
+              <div class="pt-2">
+                <button onclick="navigateTo('fertilizer')" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-black rounded-xl text-sm transition shadow flex items-center gap-2">
+                  <i class="fa-solid fa-calculator"></i> Open Fertilizer Dosage Calculator
+                </button>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-stone-800">
+              <div class="bg-white/95 p-4 rounded-2xl border border-emerald-300">
+                <div class="text-2xl mb-1">🧪</div>
+                <h4 class="font-bold text-xs sm:text-sm text-stone-900">NPK Nitrogen Ratio</h4>
+                <p class="text-[11px] text-stone-600 mt-1">Leaf growth, photosynthesis & tillering speed.</p>
+              </div>
+              <div class="bg-white/95 p-4 rounded-2xl border border-emerald-300">
+                <div class="text-2xl mb-1">🌿</div>
+                <h4 class="font-bold text-xs sm:text-sm text-stone-900">Phosphorus & Potash</h4>
+                <p class="text-[11px] text-stone-600 mt-1">Deep root establishment & pest resistance.</p>
+              </div>
+              <div class="bg-white/95 p-4 rounded-2xl border border-emerald-300">
+                <div class="text-2xl mb-1">🐮</div>
+                <h4 class="font-bold text-xs sm:text-sm text-stone-900">Desi Jeevamrut</h4>
+                <p class="text-[11px] text-stone-600 mt-1">Bio-enzymes from indigenous desi cow dung.</p>
+              </div>
+              <div class="bg-white/95 p-4 rounded-2xl border border-emerald-300">
+                <div class="text-2xl mb-1">💧</div>
+                <h4 class="font-bold text-xs sm:text-sm text-stone-900">Drip Fertigation</h4>
+                <p class="text-[11px] text-stone-600 mt-1">Save 45% water and 30% fertilizer expense.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 2: FERTILIZER & KRISHI POSHAN GUIDE (SOIL ADVISORY)   -->
+    <!-- ========================================================= -->
+    <section id="view-fertilizer" class="view-panel hidden pb-16">
+      
+      <!-- Fertilizer Hero -->
+      <div class="bg-gradient-to-r from-emerald-950 via-kisan-900 to-stone-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center space-y-3">
+          <span class="inline-block px-3 py-1 rounded-full bg-amber-400 text-stone-950 text-xs font-black uppercase">
+            <i class="fa-solid fa-seedling mr-1"></i> Krishi Poshan Gyan Kendra
+          </span>
+          <h1 class="text-3xl sm:text-5xl font-black">Indian Fertilizer Guide & Soil Nutrient Planner</h1>
+          <p class="text-stone-300 text-xs sm:text-sm max-w-2xl mx-auto">
+            Scientifically balanced fertilizer management for Indian agriculture. Understand NPK formulas, micronutrients, subsidized rates, and organic manures.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+        
+        <!-- Interactive Fertilizer Calculator Card -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-100 mb-12">
+          <div class="flex items-center gap-3 pb-4 border-b border-stone-100 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-amber-500 text-stone-950 font-black flex items-center justify-center text-lg">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div>
+              <h2 class="text-lg sm:text-xl font-black text-stone-900">Smart Crop Fertilizer Dosage Calculator (उर्वरक गणक)</h2>
+              <p class="text-xs text-stone-500">Calculate recommended bags of Urea, DAP, and Potash per acre for major Indian crops.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Select Crop (फसल)</label>
+              <select id="calcCropSelect" onchange="calculateFertilizerDosage()" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="wheat">🌾 Wheat / Gehu (गेहूं)</option>
+                <option value="paddy">🍚 Paddy / Dhan (धान / चावल)</option>
+                <option value="sugarcane">🎋 Sugarcane / Ganna (गन्ना)</option>
+                <option value="cotton">☁️ Cotton / Kapas (कपास)</option>
+                <option value="potato">🥔 Potato / Aloo (आलू)</option>
+                <option value="mustard">🌿 Mustard / Sarson (सरसों)</option>
+                <option value="tomato">🍅 Tomato / Tamatar (टमाटर)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Land Area (ज़मीन का क्षेत्रफल)</label>
+              <div class="flex">
+                <input type="number" id="calcLandArea" value="2" min="0.5" step="0.5" oninput="calculateFertilizerDosage()" class="w-full bg-stone-50 border border-stone-200 rounded-l-xl p-2.5 text-xs font-bold text-stone-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <span class="bg-stone-200 px-3 py-2.5 rounded-r-xl text-xs font-bold text-stone-700">Acres</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Soil Type (मिट्टी का प्रकार)</label>
+              <select id="calcSoilSelect" onchange="calculateFertilizerDosage()" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="alluvial">Alluvial / Doomat (दोमट मिट्टी)</option>
+                <option value="black">Black Soil / Kali Mitti (काली मिट्टी)</option>
+                <option value="red">Red & Sandy Soil (लाल/बलुई मिट्टी)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Farming Approach</label>
+              <select id="calcMethodSelect" onchange="calculateFertilizerDosage()" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                <option value="integrated">Integrated (Chemical + Organic)</option>
+                <option value="organic">100% Jaivik (Organic Bio-Khad)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Calculation Results Box -->
+          <div id="calcResultsBox" class="bg-gradient-to-r from-emerald-50 via-green-50 to-amber-50 rounded-2xl p-5 border border-emerald-200">
+            <h4 class="text-xs font-black text-emerald-900 uppercase tracking-wider mb-3">Recommended Nutritional Plan:</h4>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+              <div class="bg-white p-3.5 rounded-xl shadow-sm border border-emerald-100">
+                <p class="text-[11px] text-stone-500 font-bold uppercase">Neem Coated Urea (46% N)</p>
+                <p id="resUrea" class="text-xl font-black text-emerald-700 mt-1">2.5 Bags</p>
+                <p class="text-[10px] text-stone-400">Split in 3 doses</p>
+              </div>
+              <div class="bg-white p-3.5 rounded-xl shadow-sm border border-emerald-100">
+                <p class="text-[11px] text-stone-500 font-bold uppercase">DAP (18:46:0)</p>
+                <p id="resDAP" class="text-xl font-black text-amber-600 mt-1">1.0 Bag</p>
+                <p class="text-[10px] text-stone-400">Basal dose at sowing</p>
+              </div>
+              <div class="bg-white p-3.5 rounded-xl shadow-sm border border-emerald-100">
+                <p class="text-[11px] text-stone-500 font-bold uppercase">MOP Potash (60% K)</p>
+                <p id="resPotash" class="text-xl font-black text-stone-800 mt-1">0.8 Bag</p>
+                <p class="text-[10px] text-stone-400">At sowing & flowering</p>
+              </div>
+              <div class="bg-white p-3.5 rounded-xl shadow-sm border border-emerald-100">
+                <p class="text-[11px] text-stone-500 font-bold uppercase">Zinc Sulfate / Organic</p>
+                <p id="resZinc" class="text-xl font-black text-blue-700 mt-1">10 kg</p>
+                <p class="text-[10px] text-stone-400">Enhances micronutrients</p>
+              </div>
+            </div>
+
+            <div class="mt-4 text-xs text-emerald-950 flex items-center justify-between border-t border-emerald-200/60 pt-3">
+              <span><i class="fa-solid fa-lightbulb text-amber-500 mr-1.5"></i> Estimated Subsidized Fertilizer Cost for this area: <strong id="resEstimatedCost" class="text-sm font-black text-emerald-900">₹2,140 total</strong></span>
+              <button onclick="filterCategory('fertilizers'); navigateTo('home')" class="text-emerald-700 font-bold hover:underline">
+                Order Khad Online &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Major Indian Fertilizer Categories -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-black text-stone-900 mb-6">Major Fertilizer Categories in India (उर्वरक के मुख्य प्रकार)</h2>
+          
+          <div class="grid md:grid-cols-3 gap-6">
+            
+            <!-- Chemical Fertilizers -->
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 card-hover flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center text-xl mb-4 font-black">
+                  🧪
+                </div>
+                <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">Primary Inorganics</span>
+                <h3 class="text-lg font-black text-stone-900 mt-2">Chemical & NPK Fertilizers</h3>
+                <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+                  Fast-acting concentrated nutrients providing Nitrogen (N), Phosphorus (P), and Potassium (K) in precise ratios.
+                </p>
+                <div class="mt-4 space-y-2 text-xs text-stone-700">
+                  <div class="p-2 bg-stone-50 rounded-xl"><strong>Neem Coated Urea:</strong> 46% Nitrogen for rapid foliage. (₹266.50/45kg)</div>
+                  <div class="p-2 bg-stone-50 rounded-xl"><strong>DAP (18-46-0):</strong> Crucial for strong root anchorage. (₹1,350/50kg)</div>
+                  <div class="p-2 bg-stone-50 rounded-xl"><strong>MOP (Muriate of Potash):</strong> Improves grain weight and disease defense.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-500">
+                <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-1"></i> Avoid excess Urea to prevent soil acidification.
+              </div>
+            </div>
+
+            <!-- Organic & Bio Fertilizers -->
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-emerald-200 card-hover flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center text-xl mb-4 font-black">
+                  🌿
+                </div>
+                <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">100% Jaivik Organic</span>
+                <h3 class="text-lg font-black text-stone-900 mt-2">Bio-Fertilizers & Manures</h3>
+                <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+                  Eco-friendly, improves soil carbon humus, micro-organisms, and long-term soil water retention.
+                </p>
+                <div class="mt-4 space-y-2 text-xs text-stone-700">
+                  <div class="p-2 bg-emerald-50/70 rounded-xl"><strong>Vermicompost (Kechua Khad):</strong> Rich in humic acid and micro-nutrients.</div>
+                  <div class="p-2 bg-emerald-50/70 rounded-xl"><strong>Neem Khali (Neem Cake):</strong> Dual action fertilizer + pest repellent.</div>
+                  <div class="p-2 bg-emerald-50/70 rounded-xl"><strong>Rhizobium / PSB Bio-Culture:</strong> Fixes atmospheric nitrogen naturally.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-emerald-700 font-bold">
+                <i class="fa-solid fa-check text-emerald-600 mr-1"></i> Eligible for Paramparagat Krishi Vikas Yojana.
+              </div>
+            </div>
+
+            <!-- Micronutrients & Foliar -->
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 card-hover flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 bg-amber-50 text-amber-700 rounded-2xl flex items-center justify-center text-xl mb-4 font-black">
+                  💧
+                </div>
+                <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">Foliar & Water Soluble</span>
+                <h3 class="text-lg font-black text-stone-900 mt-2">Micronutrients & WSF Sprays</h3>
+                <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+                  Direct foliar absorption through leaf stomata for immediate correction of mineral deficiencies.
+                </p>
+                <div class="mt-4 space-y-2 text-xs text-stone-700">
+                  <div class="p-2 bg-stone-50 rounded-xl"><strong>NPK 19:19:19 Spray:</strong> 100% water soluble for rapid recovery.</div>
+                  <div class="p-2 bg-stone-50 rounded-xl"><strong>Chelated Zinc & Ferrous:</strong> Prevents Khaira disease in paddy.</div>
+                  <div class="p-2 bg-stone-50 rounded-xl"><strong>Boron 20%:</strong> Prevents fruit cracking and improves pollination.</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] text-stone-500">
+                <i class="fa-solid fa-droplet text-blue-500 mr-1"></i> Best sprayed during early morning or evening hours.
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Practical 5 Step Fertilizer Application Guide -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-stone-200">
+          <h2 class="text-xl font-black text-stone-900 mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-emerald-600"></i> Best Practices for Effective Fertilizer Application (उर्वरक उपयोग की विधि)
+          </h2>
+
+          <div class="grid md:grid-cols-5 gap-4">
+            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 relative">
+              <span class="text-2xl font-black text-emerald-600/30 absolute top-2 right-3">01</span>
+              <h4 class="font-black text-xs text-stone-900 mb-1">Soil Health Card</h4>
+              <p class="text-[11px] text-stone-600">Always test soil pH and N-P-K reserves before buying fertilizers to avoid excess application.</p>
+            </div>
+            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 relative">
+              <span class="text-2xl font-black text-emerald-600/30 absolute top-2 right-3">02</span>
+              <h4 class="font-black text-xs text-stone-900 mb-1">Basal Dose Timing</h4>
+              <p class="text-[11px] text-stone-600">Apply entire dose of Phosphorus (DAP/SSP) and Potash at the time of field preparation/sowing.</p>
+            </div>
+            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 relative">
+              <span class="text-2xl font-black text-emerald-600/30 absolute top-2 right-3">03</span>
+              <h4 class="font-black text-xs text-stone-900 mb-1">Split Urea Application</h4>
+              <p class="text-[11px] text-stone-600">Divide Urea into 2 or 3 splits: at tillering stage and panicle initiation to prevent leaching loss.</p>
+            </div>
+            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 relative">
+              <span class="text-2xl font-black text-emerald-600/30 absolute top-2 right-3">04</span>
+              <h4 class="font-black text-xs text-stone-900 mb-1">Immediate Irrigation</h4>
+              <p class="text-[11px] text-stone-600">Irrigate lightly right after top dressing so chemical nutrients dissolve directly to root zone.</p>
+            </div>
+            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 relative">
+              <span class="text-2xl font-black text-emerald-600/30 absolute top-2 right-3">05</span>
+              <h4 class="font-black text-xs text-stone-900 mb-1">Organic Co-Use</h4>
+              <p class="text-[11px] text-stone-600">Mix chemical fertilizers with organic farmyard manure (FYM) to maintain earthworm activity.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 3: KISAN DIRECT LISTING PORTAL (SELL PRODUCE)        -->
+    <!-- ========================================================= -->
+    <section id="view-sell" class="view-panel hidden pb-16">
+      
+      <div class="bg-gradient-to-r from-stone-900 via-emerald-950 to-kisan-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center space-y-2">
+          <span class="px-3 py-1 bg-amber-500 text-stone-950 text-xs font-black rounded-full uppercase">Kisan Direct Sell Portal</span>
+          <h1 class="text-3xl sm:text-4xl font-black">List Your Fresh Harvest • Set Your Own ₹ Rate</h1>
+          <p class="text-stone-300 text-xs sm:text-sm">No APMC middleman cuts. List crops in minutes. Open for all Indian farmers.</p>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 -mt-6">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-emerald-100">
+          
+          <div class="mb-6 pb-4 border-b border-stone-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-lg font-black">
+                <i class="fa-solid fa-plus"></i>
+              </div>
+              <div>
+                <h3 class="font-black text-base text-stone-900">Add New Crop / Dairy Listing (फसल जोड़ें)</h3>
+                <p class="text-xs text-stone-500">Your product will immediately appear in the live Bharat Mandi marketplace.</p>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">Instant Publish</span>
+          </div>
+
+          <form id="formAddProduce" onsubmit="handleNewProduceSubmission(event)" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Crop / Product Name (फसल का नाम) *</label>
+                <input type="text" id="newProdName" required placeholder="e.g. Alphonso Mango, Desi Wheat, Gir Cow Ghee" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Category (श्रेणी) *</label>
+                <select id="newProdCategory" required class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                  <option value="grains">🌾 Grains & Pulses (अनाज और दालें)</option>
+                  <option value="vegetables">🥬 Fresh Vegetables (सब्जियां)</option>
+                  <option value="fruits">🍎 Fresh Fruits (फल)</option>
+                  <option value="dairy">🥛 Dairy, Milk & Desi Ghee (दुग्ध उत्पाद)</option>
+                  <option value="fertilizers">🌱 Fertilizer & Manure (खाद और पोषण)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Your Price in ₹ (कीमत प्रति इकाई) *</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-2.5 font-bold text-stone-500 text-xs">₹</span>
+                  <input type="number" id="newProdPrice" required min="1" step="0.5" placeholder="50" class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-7 pr-3 py-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Unit of Measurement (इकाई) *</label>
+                <select id="newProdUnit" required class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                  <option value="kg">per Kilogram (kg)</option>
+                  <option value="quintal">per Quintal (100 kg)</option>
+                  <option value="litre">per Litre (L)</option>
+                  <option value="dozen">per Dozen</option>
+                  <option value="crate">per Crate (20 kg)</option>
+                  <option value="bag">per 50kg Bag</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Available Quantity (मात्रा) *</label>
+                <input type="number" id="newProdStock" required min="1" placeholder="e.g. 500" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Farmer / Farm Name (किसान का नाम) *</label>
+                <input type="text" id="newProdFarmer" required placeholder="e.g. Baldev Singh / Punjab Organic Farms" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Farm Location & State (स्थान) *</label>
+                <input type="text" id="newProdLocation" required placeholder="e.g. Khanna, Punjab" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Harvest Details & Quality Description (विवरण)</label>
+              <textarea id="newProdDesc" rows="2" placeholder="e.g. Naturally ripened, grown using organic compost, harvested fresh yesterday..." class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Choose Icon/Emoji (चिन्ह)</label>
+                <select id="newProdEmoji" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500">
+                  <option value="🌾">🌾 Grain / Wheat / Rice</option>
+                  <option value="🥭">🥭 Mango / Aam</option>
+                  <option value="🥔">🥔 Potato / Aloo</option>
+                  <option value="🧅">🧅 Onion / Pyaz</option>
+                  <option value="🍅">🍅 Tomato / Tamatar</option>
+                  <option value="🥬">🥬 Greens / Palak</option>
+                  <option value="🥛">🥛 Desi Cow Milk</option>
+                  <option value="🧈">🧈 Desi Ghee / Butter</option>
+                  <option value="🌱">🌱 Organic Khad / Fertilizer</option>
+                  <option value="🍎">🍎 Apple / Fruits</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1">Farming Type Badge</label>
+                <select id="newProdBadge" class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-xs font-bold text-stone-900 focus:bg-white focus:ring-2 focus:ring-emerald-500">
+                  <option value="100% Organic">100% Organic (जैविक)</option>
+                  <option value="Direct Harvest">Direct Harvest (ताज़ा)</option>
+                  <option value="A2 Desi Vedic">A2 Desi Vedic</option>
+                  <option value="Govt Certified">Govt Certified / APMC</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-kisan-700 hover:from-emerald-700 hover:to-kisan-800 text-white font-black text-sm rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Publish Crop Listing to Bharat Mandi
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 4: USER & FARMER DASHBOARD PORTAL                    -->
+    <!-- ========================================================= -->
+    <section id="view-dashboard" class="view-panel hidden pb-16">
+      
+      <div class="bg-stone-900 text-white py-8 px-4 sm:px-6 lg:px-8 border-b border-stone-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div id="dashAvatarLarge" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-amber-500 text-white font-black flex items-center justify-center text-xl shadow-lg">
+              R
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 id="dashUserName" class="text-xl sm:text-2xl font-black"></h1>
+                <span id="dashUserRoleBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 uppercase">Farmer</span>
+              </div>
+              <p id="dashUserLocation" class="text-xs text-stone-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Khanna Mandi, Punjab • Kisan ID: #K-77492</p>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="navigateTo('sell')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-plus"></i> New Crop Listing
+            </button>
+            <button onclick="logoutUser()" class="px-4 py-2 bg-stone-800 hover:bg-red-900/50 text-stone-300 hover:text-red-300 text-xs font-bold rounded-xl border border-stone-700 transition">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Summary Stats in INR (₹) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs font-bold text-stone-400 uppercase">Direct Earnings / Spent</span>
+            <p id="dashStatRevenue" class="text-2xl font-black text-emerald-700 mt-1">₹68,450</p>
+            <span class="text-[10px] font-semibold text-emerald-600"><i class="fa-solid fa-arrow-up mr-1"></i> 100% credited to UPI / Bank</span>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs font-bold text-stone-400 uppercase">Active Crop Listings</span>
+            <p id="dashStatListings" class="text-2xl font-black text-stone-900 mt-1">4 Items</p>
+            <span class="text-[10px] font-semibold text-stone-500">Live in Bharat Mandi</span>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs font-bold text-stone-400 uppercase">Completed Orders</span>
+            <p id="dashStatOrders" class="text-2xl font-black text-amber-600 mt-1">18 Dispatches</p>
+            <span class="text-[10px] font-semibold text-emerald-600">4.9 ★ Rating from Buyers</span>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
+            <span class="text-xs font-bold text-stone-400 uppercase">Middleman Cuts Saved</span>
+            <p class="text-2xl font-black text-purple-700 mt-1">₹12,300</p>
+            <span class="text-[10px] font-semibold text-purple-600">Direct trade dividend</span>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          
+          <!-- Recent Orders Table -->
+          <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white rounded-3xl p-6 border border-stone-200 shadow-sm">
+              <div class="flex items-center justify-between pb-4 border-b border-stone-100 mb-4">
+                <h3 class="font-black text-stone-900 text-base">Direct Mandi Transactions & Dispatches</h3>
+                <span class="text-xs font-bold text-stone-500">All India Logistics</span>
+              </div>
+
+              <div id="dashboardOrdersContainer" class="space-y-3">
+                <!-- Injected dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Farmer's Live Listings Management -->
+            <div class="bg-white rounded-3xl p-6 border border-stone-200 shadow-sm">
+              <div class="flex items-center justify-between pb-4 border-b border-stone-100 mb-4">
+                <h3 class="font-black text-stone-900 text-base">My Produce Inventory (स्टॉक प्रबंधन)</h3>
+                <button onclick="navigateTo('sell')" class="text-xs font-bold text-emerald-700 hover:underline">
+                  + Add Another Crop
+                </button>
+              </div>
+
+              <div id="farmerProduceInventory" class="space-y-3">
+                <!-- Injected dynamically via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Advisory & Indian Soil Health Card -->
+          <div class="space-y-6">
+            <div class="bg-gradient-to-br from-emerald-50 to-green-100/70 rounded-3xl p-6 border border-emerald-200">
+              <div class="flex items-center gap-2 mb-3">
+                <i class="fa-solid fa-address-card text-emerald-700 text-xl"></i>
+                <h4 class="font-black text-stone-900 text-sm">Registered Farm Soil Card</h4>
+              </div>
+              <div class="space-y-2 text-xs text-stone-700">
+                <div class="flex justify-between py-1 border-b border-emerald-200/60">
+                  <span>Soil Reaction (pH):</span>
+                  <span class="font-bold text-stone-900">7.2 (Ideal Neutral)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-emerald-200/60">
+                  <span>Organic Carbon (OC):</span>
+                  <span class="font-bold text-emerald-800">0.68% (Medium High)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-emerald-200/60">
+                  <span>Available Nitrogen (N):</span>
+                  <span class="font-bold text-amber-700">Medium (290 kg/ha)</span>
+                </div>
+                <div class="flex justify-between py-1">
+                  <span>Available Phosphorus (P):</span>
+                  <span class="font-bold text-emerald-800">High (24 kg/ha)</span>
+                </div>
+              </div>
+
+              <button onclick="navigateTo('fertilizer')" class="mt-4 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition">
+                View Crop Nutrition Suggestions
+              </button>
+            </div>
+
+            <!-- Helpline Quick Call Box -->
+            <div class="bg-stone-900 text-white rounded-3xl p-6 border border-stone-800">
+              <h4 class="font-black text-sm text-amber-400 mb-1">Direct Kisan Support</h4>
+              <p class="text-xs text-stone-400 mb-4">Free Agronomy and Mandi trade consultations for registered farmers.</p>
+              
+              <div class="space-y-2 text-xs">
+                <a href="tel:18001801551" class="flex items-center justify-between p-3 bg-stone-800 rounded-xl hover:bg-stone-700 transition">
+                  <span class="flex items-center gap-2"><i class="fa-solid fa-phone text-green-400"></i> Toll Free Helpline</span>
+                  <strong class="text-emerald-300">1800-180-1551</strong>
+                </a>
+                <a href="https://wa.me/919876543210" target="_blank" class="flex items-center justify-between p-3 bg-emerald-900/60 rounded-xl hover:bg-emerald-900 transition text-emerald-200 font-semibold">
+                  <span class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-green-400 text-sm"></i> Kisan WhatsApp Desk</span>
+                  <span>Chat Now</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 5: ABOUT DIRECT TRADE & BHARAT KISAN VISION         -->
+    <!-- ========================================================= -->
+    <section id="view-about" class="view-panel hidden pb-16">
+      
+      <div class="hero-gradient text-white py-14 px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-4xl mx-auto space-y-3">
+          <span class="px-3 py-1 bg-white/20 text-emerald-100 text-xs font-bold rounded-full">Fair Price Agricultural Revolution</span>
+          <h1 class="text-3xl sm:text-5xl font-black">Connecting Bharat's Kisans Directly with Consumers</h1>
+          <p class="text-stone-200 text-xs sm:text-base max-w-2xl mx-auto">
+            Our mission is straightforward: Ensure farmers get 100% of what they deserve while providing families and commercial buyers with fresh, unadulterated produce.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+        
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 text-center">
+            <div class="w-14 h-14 bg-amber-100 text-amber-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 font-black">
+              ₹
+            </div>
+            <h3 class="font-black text-base text-stone-900">Fair Mandi Remuneration</h3>
+            <p class="text-xs text-stone-600 mt-2">
+              Farmers keep up to 40% higher margins compared to traditional multi-tiered arthiya networks.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 text-center">
+            <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 font-black">
+              🚚
+            </div>
+            <h3 class="font-black text-base text-stone-900">Farm-to-Door Delivery</h3>
+            <p class="text-xs text-stone-600 mt-2">
+              Harvested in the morning, dispatched by evening with verified tracking and minimal transit wastage.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-3xl shadow-sm border border-stone-200 text-center">
+            <div class="w-14 h-14 bg-blue-100 text-blue-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 font-black">
+              🌱
+            </div>
+            <h3 class="font-black text-base text-stone-900">Nutrient & Soil Advisory</h3>
+            <p class="text-xs text-stone-600 mt-2">
+              Free fertilizer calculators and sustainable agronomy guidance to protect India's soil biodiversity.
+            </p>
+          </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm overflow-x-auto">
+          <h3 class="font-black text-lg text-stone-900 mb-4">Why Farmers Direct Online Market?</h3>
+          <table class="w-full text-xs text-left">
+            <thead>
+              <tr class="border-b border-stone-200 text-stone-500 uppercase font-bold">
+                <th class="py-3 px-4">Aspect</th>
+                <th class="py-3 px-4 text-emerald-700 bg-emerald-50">Farmers Direct (Bharat Mandi)</th>
+                <th class="py-3 px-4 text-stone-400">Traditional Mandi System</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-100 text-stone-700">
+              <tr>
+                <td class="py-3.5 px-4 font-bold">Payment Currency</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-800 bg-emerald-50/50">Direct ₹ INR via UPI / Direct Transfer</td>
+                <td class="py-3.5 px-4">Delayed slips & high commission cuts</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold">Initial Login Required?</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-800 bg-emerald-50/50">No, open access for all buyers & farmers</td>
+                <td class="py-3.5 px-4">Complex agent registrations</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold">Fertilizer Guidance</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-800 bg-emerald-50/50">Built-in dosage calculators & NPK guides</td>
+                <td class="py-3.5 px-4">Untrained local vendor opinions</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold">Price Determination</td>
+                <td class="py-3.5 px-4 font-bold text-emerald-800 bg-emerald-50/50">Decided 100% by the Farmer</td>
+                <td class="py-3.5 px-4">Auction pressure by brokers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ADMIN VIEW: SECURE PRODUCT MANAGEMENT -->
+    <section id="view-admin" class="view-panel hidden pb-16">
+      <div class="bg-stone-900 text-white py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap">
+          <div><p class="text-emerald-300 text-xs font-black uppercase tracking-widest">Restricted area</p><h1 class="text-2xl sm:text-3xl font-black mt-1">Product Admin Panel</h1><p class="text-stone-300 text-sm mt-2">Add, update, and remove products in the live marketplace catalogue.</p></div>
+          <button id="adminSignOutBtn" type="button" onclick="adminSignOut()" class="hidden px-4 py-2 bg-stone-700 hover:bg-stone-600 rounded-xl text-sm font-bold">Sign out</button>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="adminNotice" class="hidden mb-5 p-4 rounded-xl text-sm font-semibold" role="status"></div>
+        <div id="adminLoginCard" class="max-w-xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm">
+          <div class="flex items-center gap-3 mb-5"><div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl"><i class="fa-solid fa-lock"></i></div><div><h2 class="font-black text-xl text-stone-900">Admin sign in</h2><p class="text-xs text-stone-500 mt-1">Use an account explicitly authorized as an admin.</p></div></div>
+          <form id="adminLoginForm" class="space-y-4">
+            <div><label for="adminEmail" class="block text-xs font-bold text-stone-700 mb-1.5">Admin email</label><input id="adminEmail" type="email" required autocomplete="username" class="w-full border border-stone-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none"></div>
+            <div><label for="adminPassword" class="block text-xs font-bold text-stone-700 mb-1.5">Password</label><input id="adminPassword" type="password" required autocomplete="current-password" class="w-full border border-stone-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none"></div>
+            <button id="adminLoginBtn" type="submit" class="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-xl">Sign in securely</button>
+          </form>
+          <p class="text-[11px] text-stone-500 mt-4">Admin access is enforced by Supabase Row Level Security, not just by this page.</p>
+        </div>
+
+        <div id="adminWorkspace" class="hidden space-y-6">
+          <div class="bg-white rounded-3xl p-5 sm:p-7 border border-stone-200 shadow-sm">
+            <div class="flex items-center justify-between gap-3 flex-wrap mb-5"><div><h2 id="adminFormHeading" class="font-black text-xl text-stone-900">Add a product</h2><p class="text-xs text-stone-500 mt-1">Fields marked * are required.</p></div><span id="adminSignedInAs" class="text-xs font-bold text-emerald-800 bg-emerald-50 rounded-full px-3 py-2"></span></div>
+            <form id="adminProductForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input id="adminProductId" type="hidden">
+              <div><label for="adminProductName" class="block text-xs font-bold text-stone-700 mb-1.5">Product name *</label><input id="adminProductName" required maxlength="140" class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="Fresh tomatoes"></div>
+              <div><label for="adminProductCategory" class="block text-xs font-bold text-stone-700 mb-1.5">Category *</label><select id="adminProductCategory" required class="w-full border border-stone-200 rounded-xl p-3 text-sm"><option value="grains">Grains</option><option value="fruits">Fruits</option><option value="vegetables">Vegetables</option><option value="dairy">Dairy</option><option value="fertilizers">Fertilizers</option><option value="other">Other</option></select></div>
+              <div><label for="adminProductPrice" class="block text-xs font-bold text-stone-700 mb-1.5">Price (₹) *</label><input id="adminProductPrice" type="number" min="0" step="0.01" required class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="0.00"></div>
+              <div><label for="adminProductUnit" class="block text-xs font-bold text-stone-700 mb-1.5">Unit *</label><input id="adminProductUnit" required maxlength="30" class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="kg, dozen, litre"></div>
+              <div><label for="adminProductStock" class="block text-xs font-bold text-stone-700 mb-1.5">Stock quantity *</label><input id="adminProductStock" type="number" min="0" step="1" required class="w-full border border-stone-200 rounded-xl p-3 text-sm" value="0"></div>
+              <div><label for="adminProductFarmer" class="block text-xs font-bold text-stone-700 mb-1.5">Farmer / seller name</label><input id="adminProductFarmer" maxlength="140" class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="Verified farmer"></div>
+              <div><label for="adminProductLocation" class="block text-xs font-bold text-stone-700 mb-1.5">Location</label><input id="adminProductLocation" maxlength="140" class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="Village, district, state"></div>
+              <div><label for="adminProductImage" class="block text-xs font-bold text-stone-700 mb-1.5">Image URL (optional)</label><input id="adminProductImage" type="url" class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="https://…"></div>
+              <div><label for="adminProductBadge" class="block text-xs font-bold text-stone-700 mb-1.5">Product badge</label><select id="adminProductBadge" class="w-full border border-stone-200 rounded-xl p-3 text-sm"><option>Direct Harvest</option><option>100% Organic</option><option>A2 Desi Vedic</option><option>Govt Certified</option></select></div>
+              <div class="md:col-span-2"><label for="adminProductDescription" class="block text-xs font-bold text-stone-700 mb-1.5">Description</label><textarea id="adminProductDescription" maxlength="2000" rows="3" class="w-full border border-stone-200 rounded-xl p-3 text-sm" placeholder="Describe the product quality and origin…"></textarea></div>
+              <div class="md:col-span-2 flex gap-3 flex-wrap"><button id="adminSaveProductBtn" type="submit" class="px-5 py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-black rounded-xl"><i class="fa-solid fa-floppy-disk mr-2"></i>Save product</button><button id="adminCancelEditBtn" type="button" onclick="resetAdminProductForm()" class="hidden px-5 py-3 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold rounded-xl">Cancel edit</button><button type="button" onclick="loadAdminProducts()" class="px-5 py-3 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold rounded-xl"><i class="fa-solid fa-rotate mr-2"></i>Refresh</button></div>
+            </form>
+          </div>
+          <div class="bg-white rounded-3xl p-5 sm:p-7 border border-stone-200 shadow-sm">
+            <div class="flex items-center justify-between gap-3 flex-wrap mb-4"><div><h2 class="font-black text-xl text-stone-900">Marketplace products</h2><p class="text-xs text-stone-500 mt-1">Edits here update the live product catalogue.</p></div><input id="adminProductSearch" type="search" placeholder="Search products…" class="border border-stone-200 rounded-xl p-3 text-sm w-full sm:w-72"></div>
+            <div class="overflow-x-auto"><table class="w-full min-w-[700px] text-left text-sm"><thead><tr class="border-b border-stone-200 text-stone-500 text-[11px] uppercase"><th class="py-3 px-2">Product</th><th class="py-3 px-2">Category</th><th class="py-3 px-2">Price</th><th class="py-3 px-2">Stock</th><th class="py-3 px-2">Actions</th></tr></thead><tbody id="adminProductRows"><tr><td colspan="5" class="py-5 text-stone-500">Sign in to load products.</td></tr></tbody></table></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUCCESS TOAST POPUP -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="bg-stone-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-emerald-500/50 flex items-center gap-3 toast-anim">
+      <div id="toastIcon" class="w-7 h-7 rounded-full bg-emerald-600 flex items-center justify-center text-xs font-bold">
+        ✓
+      </div>
+      <div>
+        <p id="toastTitle" class="text-xs font-bold text-white">Action Completed</p>
+        <p id="toastMessage" class="text-[11px] text-stone-300">Produce added to your tokri in ₹ INR</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-stone-950 text-stone-400 text-xs border-t border-stone-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-white">
+            <i class="fa-solid fa-seedling text-2xl text-emerald-500"></i>
+            <span class="text-xl font-extrabold tracking-tight">Farmers<span class="text-emerald-500">Direct</span></span>
+          </div>
+          <p class="text-[11px] text-stone-400 leading-relaxed">
+            India's open agricultural e-marketplace providing direct farm-to-door crop sales in Indian Rupee (₹ INR) with integrated agronomy & fertilizer calculators.
+          </p>
+          <div class="text-stone-300 text-xs font-semibold">
+            🇮🇳 Made with pride for Indian Kisans
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Mandi Marketplace</h4>
+          <ul class="space-y-2">
+            <li><a href="javascript:void(0)" onclick="filterCategory('grains'); navigateTo('home')" class="hover:text-emerald-400">🌾 Sharbati Wheat & Basmati Rice</a></li>
+            <li><a href="javascript:void(0)" onclick="filterCategory('fruits'); navigateTo('home')" class="hover:text-emerald-400">🥭 Ratnagiri Alphonso & Nagpur Oranges</a></li>
+            <li><a href="javascript:void(0)" onclick="filterCategory('vegetables'); navigateTo('home')" class="hover:text-emerald-400">🥔 Agra Potatoes & Nashik Onions</a></li>
+            <li><a href="javascript:void(0)" onclick="filterCategory('dairy'); navigateTo('home')" class="hover:text-emerald-400">🥛 Pure A2 Gir Cow Bilona Ghee</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Fertilizer & Agronomy</h4>
+          <ul class="space-y-2">
+            <li><a href="javascript:void(0)" onclick="navigateTo('fertilizer')" class="hover:text-emerald-400">🧪 N-P-K Fertilizer Calculator</a></li>
+            <li><a href="javascript:void(0)" onclick="navigateTo('fertilizer')" class="hover:text-emerald-400">🌿 Organic Jeevamrut & Kechua Khad</a></li>
+            <li><a href="javascript:void(0)" onclick="navigateTo('fertilizer')" class="hover:text-emerald-400">💧 Drip Fertigation Schedules</a></li>
+            <li><a href="javascript:void(0)" onclick="navigateTo('sell')" class="hover:text-emerald-400">👨‍🌾 List Fresh Harvest Free</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Kisan Sahayata Kendra</h4>
+          <p class="text-[11px] text-stone-400 mb-2">Toll-Free Government & APMC Advisory Line:</p>
+          <p class="text-lg font-black text-amber-400 mb-2">1800-180-1551</p>
+          <p class="text-[11px] text-stone-400">Support Hours: 6:00 AM - 10:00 PM IST (All 7 Days)</p>
+          <div class="mt-3 flex gap-2">
+            <span class="px-2.5 py-1 bg-stone-900 border border-stone-800 rounded text-[10px] text-stone-300">₹ INR Accepted</span>
+            <span class="px-2.5 py-1 bg-stone-900 border border-stone-800 rounded text-[10px] text-stone-300">UPI / COD Supported</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t border-stone-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500 gap-2">
+        <p>© 2025 Farmers Direct Online Market (भारत किसान ई-मंडी). All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-stone-400">APMC Norms</a>
+          <a href="#" class="hover:text-stone-400">Soil Health Portal</a>
+          <a href="#" class="hover:text-stone-400">Farmer Fair Price Charter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script>
+    // Initial State tailored for Indian Agricultural Context (in ₹ INR)
+    const APP_STATE = {
+      currentUser: null, // Open access: starts as null, accessible without login
+      cart: [],
+      selectedCategory: 'all',
+      searchQuery: '',
+      selectedState: 'all',
+      sortOption: 'featured',
+      products: [
+        {
+          id: 1,
+          name: "Premium Basmati Rice 1121",
+          category: "grains",
+          price: 85,
+          unit: "kg",
+          stock: 450,
+          farmer: "Sardar Gurpreet Singh",
+          location: "Karnal, Haryana",
+          emoji: "🍚",
+          badge: "Direct Harvest",
+          desc: "Aromatic extra-long grain aged Basmati, freshly harvested directly from Haryana farms."
+        },
+        {
+          id: 2,
+          name: "Ratnagiri Alphonso Mangoes (हापुस)",
+          category: "fruits",
+          price: 650,
+          unit: "dozen",
+          stock: 60,
+          farmer: "Dattaram Sawant",
+          location: "Ratnagiri, Maharashtra",
+          emoji: "🥭",
+          badge: "100% Organic",
+          desc: "GI-Tagged naturally tree-ripened Alphonso with rich aroma and unmatched sweetness."
+        },
+        {
+          id: 3,
+          name: "Organic Sharbati Gehu (MP Wheat)",
+          category: "grains",
+          price: 42,
+          unit: "kg",
+          stock: 800,
+          farmer: "Rameshwar Patidar",
+          location: "Sehore, Madhya Pradesh",
+          emoji: "🌾",
+          badge: "100% Organic",
+          desc: "Golden amber grains grown in black soil of Narmada valley, ideal for soft chapatis."
+        },
+        {
+          id: 4,
+          name: "Pure A2 Gir Cow Vedic Bilona Ghee",
+          category: "dairy",
+          price: 1450,
+          unit: "litre",
+          stock: 35,
+          farmer: "Gau Seva Ashram Trust",
+          location: "Junagadh, Gujarat",
+          emoji: "🧈",
+          badge: "A2 Desi Vedic",
+          desc: "Made via traditional hand-churned Bilona method from free-grazing indigenous Gir cows."
+        },
+        {
+          id: 5,
+          name: "Nashik Red Onions (नासिक प्याज)",
+          category: "vegetables",
+          price: 24,
+          unit: "kg",
+          stock: 1200,
+          farmer: "Kailash Patil",
+          location: "Lasalgaon, Maharashtra",
+          emoji: "🧅",
+          badge: "Direct Harvest",
+          desc: "Crisp and pungent high-shelf-life onions directly from Asia's largest onion mandi."
+        },
+        {
+          id: 6,
+          name: "Agra Jyoti Potatoes (आलू)",
+          category: "vegetables",
+          price: 16,
+          unit: "kg",
+          stock: 2500,
+          farmer: "Brijesh Yadav",
+          location: "Fatehabad, Uttar Pradesh",
+          emoji: "🥔",
+          badge: "Direct Harvest",
+          desc: "Medium-large clean farm potatoes, freshly dug out from the fertile Ganga belt."
+        },
+        {
+          id: 7,
+          name: "Fresh Malai Paneer (Desi Dairy)",
+          category: "dairy",
+          price: 360,
+          unit: "kg",
+          stock: 40,
+          farmer: "Verma Dairy Farms",
+          location: "Amritsar, Punjab",
+          emoji: "🥛",
+          badge: "Direct Harvest",
+          desc: "Soft, zero-preservative pure whole milk paneer made daily on the farm."
+        },
+        {
+          id: 8,
+          name: "Himachal Royal Delicious Apples",
+          category: "fruits",
+          price: 140,
+          unit: "kg",
+          stock: 280,
+          farmer: "Prakash Negi",
+          location: "Kotgarh, Himachal Pradesh",
+          emoji: "🍎",
+          badge: "100% Organic",
+          desc: "High-altitude sweet crunchy red apples plucked directly from hillside orchards."
+        },
+        {
+          id: 9,
+          name: "Pure Vermicompost (केचुआ खाद)",
+          category: "fertilizers",
+          price: 450,
+          unit: "bag",
+          stock: 150,
+          farmer: "Jaivik Krishi Sansthan",
+          location: "Jaipur, Rajasthan",
+          emoji: "🌱",
+          badge: "100% Organic",
+          desc: "50kg pack of nutrient-rich black gold vermicompost enriched with beneficial microbes."
+        },
+        {
+          id: 10,
+          name: "Kolar Field Hybrid Fresh Tomatoes",
+          category: "vegetables",
+          price: 22,
+          unit: "kg",
+          stock: 650,
+          farmer: "Manjunath Gowda",
+          location: "Kolar, Karnataka",
+          emoji: "🍅",
+          badge: "Direct Harvest",
+          desc: "Firm, rich red juicy tomatoes harvested early morning for maximum crispness."
+        },
+        {
+          id: 11,
+          name: "Yellow Mustard Seeds (सरसों)",
+          category: "grains",
+          price: 68,
+          unit: "kg",
+          stock: 350,
+          farmer: "Ramavtar Meena",
+          location: "Bharatpur, Rajasthan",
+          emoji: "🌿",
+          badge: "100% Organic",
+          desc: "High oil content bold yellow mustard seeds for cold-pressed kachi ghani extraction."
+        },
+        {
+          id: 12,
+          name: "Neem Oil 10,000 PPM Bio-Pesticide",
+          category: "fertilizers",
+          price: 380,
+          unit: "litre",
+          stock: 90,
+          farmer: "South Green Agrotech",
+          location: "Coimbatore, Tamil Nadu",
+          emoji: "🧪",
+          badge: "Govt Certified",
+          desc: "Cold-pressed pure Azadirachtin bio-shield fertilizer and pest protection."
+        }
+      ],
+      orders: [
+        {
+          id: "ORD-94821",
+          buyerName: "Ananya Sharma (Retail)",
+          cropItems: "Basmati Rice 1121 (5 kg), Alphonso Mangoes (2 dozen)",
+          totalAmount: 1725,
+          date: "Today, 11:30 AM",
+          status: "Dispatched",
+          destination: "Delhi NCR"
+        },
+        {
+          id: "ORD-94818",
+          buyerName: "Kisan Kirana Hub",
+          cropItems: "Sharbati Gehu (100 kg), Agra Potatoes (50 kg)",
+          totalAmount: 5000,
+          date: "Yesterday",
+          status: "Delivered",
+          destination: "Jaipur, RJ"
+        }
+      ]
+    };
+
+     // DOM Ready Initialization
+      document.addEventListener('DOMContentLoaded', () => {
+  const savedUser = localStorage.getItem('kisan_user');
+
+  if (savedUser) {
+    try {
+      APP_STATE.currentUser = JSON.parse(savedUser);
+    } catch (error) {
+      console.error('Saved user data is invalid:', error);
+      APP_STATE.currentUser = null;
+      localStorage.removeItem('kisan_user');
+    }
+  }
+
+  updateUserNavUI();
+  renderProductCatalog();
+  updateCartUI();
+  renderDashboardData();
+
+  if (typeof calculateFertilizerDosage === 'function') {
+    calculateFertilizerDosage();
+  }
+});
+      updateUserNavUI();
+      renderProductCatalog();
+      updateCartUI();
+      function renderDashboardData() {
+  const ordersContainer =
+    document.getElementById('dashboardOrdersContainer');
+
+  const inventoryContainer =
+    document.getElementById('farmerProduceInventory');
+
+  if (!ordersContainer || !inventoryContainer) {
+    return;
+  }
+
+  const user = APP_STATE.currentUser;
+
+  if (user) {
+    const userName =
+      user.name || user.full_name || user.email || 'User';
+
+    const userRole =
+      user.role === 'buyer' ? 'BUYER' : 'FARMER';
+
+    const userLocation =
+      user.location || 'India';
+
+    const dashUserName =
+      document.getElementById('dashUserName');
+
+    const dashUserRoleBadge =
+      document.getElementById('dashUserRoleBadge');
+
+    const dashUserLocation =
+      document.getElementById('dashUserLocation');
+
+    const dashAvatarLarge =
+      document.getElementById('dashAvatarLarge');
+
+    if (dashUserName) {
+      dashUserName.textContent = userName;
+    }
+
+    if (dashUserRoleBadge) {
+      dashUserRoleBadge.textContent = userRole;
+    }
+
+    if (dashUserLocation) {
+      dashUserLocation.textContent =
+        `${userLocation} • Verified Direct Mandi Member`;
+    }
+
+    if (dashAvatarLarge) {
+      dashAvatarLarge.textContent =
+        userName.charAt(0).toUpperCase();
+    }
+  }
+
+  ordersContainer.innerHTML = APP_STATE.orders.map(order => `
+    <div class="p-3.5 bg-stone-50 rounded-2xl border border-stone-200/80">
+      <p class="font-bold">${order.cropItems}</p>
+      <p class="text-xs text-stone-500">
+        ${order.status} • ₹${order.totalAmount}
+      </p>
+    </div>
+  `).join('');
+
+  inventoryContainer.innerHTML = APP_STATE.products
+    .slice(0, 4)
+    .map(product => `
+      <div class="p-3 bg-stone-50 rounded-2xl border border-stone-200/70">
+        <p class="font-bold">${product.name}</p>
+        <p class="text-xs text-stone-500">
+          ₹${product.price}/${product.unit}
+        </p>
+      </div>
+    `)
+    .join('');
+}
+  // Keep your existing orders and inventory rendering below this point.
+
+     
+      calculateFertilizerDosage();
+    ;
+
+    // Navigation Switcher
+    function navigateTo(viewId) {
+      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.add('hidden'));
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // Update active nav styling
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('bg-emerald-50', 'text-emerald-700', 'font-semibold');
+        btn.classList.add('text-stone-700', 'font-medium');
+      });
+      const activeNavBtn = document.getElementById(`nav-${viewId}`);
+      if (activeNavBtn) {
+        activeNavBtn.classList.add('bg-emerald-50', 'text-emerald-700', 'font-semibold');
+        activeNavBtn.classList.remove('text-stone-700');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Render Product Cards (in Indian Currency ₹)
+       function renderProductCatalog() {
+       const grid = document.getElementById('productGridCards');
+       const emptyState = document.getElementById('emptyCatalogState');
+      
+        let filtered = APP_STATE.products.filter(item => {
+        const matchesCategory = (APP_STATE.selectedCategory === 'all') || (item.category === APP_STATE.selectedCategory);
+        const query = APP_STATE.searchQuery.toLowerCase();
+        const matchesSearch = item.name.toLowerCase().includes(query) || 
+                              item.location.toLowerCase().includes(query) || 
+                              item.farmer.toLowerCase().includes(query) ||
+                              item.desc.toLowerCase().includes(query);
+        const matchesState = (APP_STATE.selectedState === 'all') || item.location.toLowerCase().includes(APP_STATE.selectedState.toLowerCase());
+
+        return matchesCategory && matchesSearch && matchesState;
+      });
+
+      // Sort logic
+      if (APP_STATE.sortOption === 'price-low') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (APP_STATE.sortOption === 'price-high') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (APP_STATE.sortOption === 'stock') {
+        filtered.sort((a, b) => b.stock - a.stock);
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm card-hover flex flex-col justify-between relative group">
+          
+          <div>
+            <!-- Image / Emoji Header Area -->
+            <div class="h-36 w-full bg-gradient-to-br from-stone-50 via-emerald-50/50 to-amber-50 rounded-2xl flex items-center justify-center text-5xl relative overflow-hidden border border-emerald-100/60">
+              ${item.image_url ? `<img src="${escapeProductHTML(item.image_url)}" alt="${escapeProductHTML(item.name)}" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-300">` : `<span class="transform group-hover:scale-110 transition duration-300">${escapeProductHTML(item.emoji || '🌱')}</span>`}
+              <span class="absolute top-3 left-3 text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ${getBadgeClass(item.badge)}">
+                ${escapeProductHTML(item.badge || 'Direct Harvest')}
+              </span>
+              <span class="absolute bottom-2 right-2 text-[10px] font-semibold bg-white/90 text-stone-600 px-2 py-0.5 rounded-md backdrop-blur">
+                Stock: ${escapeProductHTML(item.stock)} ${escapeProductHTML(item.unit)}
+              </span>
+            </div>
+
+            <!-- Title & Farmer Info -->
+            <div class="mt-4">
+              <div class="flex items-start justify-between gap-1">
+                <h3 class="font-black text-stone-900 text-sm leading-snug">${escapeProductHTML(item.name)}</h3>
+              </div>
+              <p class="text-[11px] text-stone-500 mt-0.5 flex items-center gap-1">
+                <i class="fa-solid fa-location-dot text-emerald-600"></i> ${escapeProductHTML(item.location || 'India')}
+              </p>
+              <p class="text-[11px] text-emerald-800 font-semibold mt-0.5">
+                👨‍🌾 Kisan: ${escapeProductHTML(item.farmer || 'Verified Farmer')}
+              </p>
+              <p class="text-[11px] text-stone-600 mt-2 line-clamp-2 leading-relaxed">
+                ${escapeProductHTML(item.desc || 'Fresh produce directly from the farm.')}
+              </p>
+            </div>
+          </div>
+
+          <!-- Price in ₹ and Add to Basket Button -->
+          <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-stone-400 font-medium">Direct Rate:</span>
+              <div class="text-lg font-black text-emerald-700 leading-none">
+                ₹${item.price} <span class="text-[11px] font-bold text-stone-500">/${item.unit}</span>
+              </div>
+            </div>
+
+            <button onclick="quickAddProduce(${JSON.stringify(item.id)})" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-sm flex items-center gap-1.5 active:scale-95">
+              <i class="fa-solid fa-plus"></i> Add to Tokri
+            </button>
+          </div>
+
+        </div>
+      `).join('');
+    }
+
+    function getBadgeClass(badge) {
+      badge = badge || 'Direct Harvest';
+      if (badge.includes('Organic')) return 'bg-emerald-600 text-white';
+      if (badge.includes('A2')) return 'bg-amber-500 text-stone-950 font-black';
+      if (badge.includes('Govt')) return 'bg-blue-600 text-white';
+      return 'bg-stone-800 text-white';
+    }
+
+    // Category Filter Handler
+    function filterCategory(cat) {
+      APP_STATE.selectedCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white', 'shadow');
+        btn.classList.add('bg-stone-100', 'text-stone-700');
+      });
+      event?.currentTarget?.classList?.add('bg-emerald-600', 'text-white', 'shadow');
+      event?.currentTarget?.classList?.remove('bg-stone-100', 'text-stone-700');
+      
+      renderProductCatalog();
+    }
+
+    function handleSearchFilter() {
+      const searchInput = document.getElementById('mainSearchInput');
+      const stateSelect = document.getElementById('stateFilterSelect');
+      APP_STATE.searchQuery = searchInput.value;
+      APP_STATE.selectedState = stateSelect.value;
+      renderProductCatalog();
+    }
+
+    function handleProduceSort() {
+      APP_STATE.sortOption = document.getElementById('sortProduceSelect').value;
+      renderProductCatalog();
+    }
+
+    function resetFilters() {
+      APP_STATE.searchQuery = '';
+      APP_STATE.selectedCategory = 'all';
+      APP_STATE.selectedState = 'all';
+      document.getElementById('mainSearchInput').value = '';
+      document.getElementById('stateFilterSelect').value = 'all';
+      renderProductCatalog();
+    }
+
+    // Add produce to Basket
+    function quickAddProduce(productId) {
+      const item = APP_STATE.products.find(p => p.id === productId);
+      if (!item) return;
+
+      const existing = APP_STATE.cart.find(c => c.id === productId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        APP_STATE.cart.push({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          unit: item.unit,
+          emoji: item.emoji,
+          farmer: item.farmer,
+          quantity: 1
+        });
+      }
+
+      updateCartUI();
+      showToast("Tokri Updated", `${item.name} added at ₹${item.price}/${item.unit}`);
+    }
+
+    // Cart Updates & Calculations in ₹
+    function updateCartUI() {
+      const countBadge = document.getElementById('cartCountBadge');
+      const container = document.getElementById('cartItemsContainer');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const grandTotalEl = document.getElementById('cartGrandTotal');
+
+      const totalItems = APP_STATE.cart.reduce((sum, item) => sum + item.quantity, 0);
+      countBadge.textContent = totalItems;
+
+      if (APP_STATE.cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 text-stone-400 space-y-3">
+            <i class="fa-solid fa-basket-shopping text-5xl text-stone-200"></i>
+            <p class="text-sm font-bold text-stone-600">Aapki Tokri Khali Hai (Basket is Empty)</p>
+            <p class="text-xs text-stone-400">Explore fresh farm harvests priced in ₹ INR and add produce directly.</p>
+            <button onclick="toggleCart(); navigateTo('home')" class="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold mt-2">
+              Start Shopping
+            </button>
+          </div>
+        `;
+        subtotalEl.textContent = "₹0";
+        grandTotalEl.textContent = "₹0";
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = APP_STATE.cart.map(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        return `
+          <div class="flex items-center gap-3 bg-stone-50 p-3 rounded-2xl border border-stone-200/70">
+            <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm border border-stone-100 flex-shrink-0">
+              ${item.emoji}
+            </div>
+            
+            <div class="flex-1 min-w-0">
+              <h4 class="font-bold text-xs text-stone-900 truncate">${item.name}</h4>
+              <p class="text-[10px] text-stone-500">₹${item.price}/${item.unit} • by ${escapeProductHTML(item.farmer || 'Verified Farmer')}</p>
+              <div class="text-xs font-black text-emerald-700 mt-1">₹${itemTotal.toLocaleString('en-IN')}</div>
+            </div>
+
+            <!-- Qty Controls -->
+            <div class="flex items-center gap-1.5 bg-white border border-stone-200 rounded-xl px-2 py-1">
+              <button onclick="changeCartQty(${item.id}, -1)" class="text-stone-500 hover:text-red-600 font-bold px-1 text-xs">-</button>
+              <span class="text-xs font-black text-stone-900 px-1">${item.quantity}</span>
+              <button onclick="changeCartQty(${item.id}, 1)" class="text-stone-500 hover:text-emerald-600 font-bold px-1 text-xs">+</button>
+            </div>
+
+            <button onclick="removeCartItem(${item.id})" class="text-stone-300 hover:text-red-500 p-1">
+              <i class="fa-solid fa-trash-can text-xs"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      const transport = 40;
+      const grandTotal = subtotal + transport;
+
+      subtotalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+      grandTotalEl.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
+    }
+
+    function changeCartQty(id, delta) {
+      const item = APP_STATE.cart.find(c => c.id === id);
+      if (!item) return;
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        APP_STATE.cart = APP_STATE.cart.filter(c => c.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function removeCartItem(id) {
+      APP_STATE.cart = APP_STATE.cart.filter(c => c.id !== id);
+      updateCartUI();
+      showToast("Removed", "Item removed from your basket");
+    }
+
+    // Checkout must always go through Razorpay and server-side payment verification.
+    function proceedToDirectCheckout() {
+      return startRazorpayPayment();
+    }
+
+    // Fertilizer Calculation Logic for Indian Soils & Crops
+    function calculateFertilizerDosage() {
+      const crop = document.getElementById('calcCropSelect').value;
+      const acres = parseFloat(document.getElementById('calcLandArea').value) || 1;
+      const soil = document.getElementById('calcSoilSelect').value;
+      const method = document.getElementById('calcMethodSelect').value;
+
+      let ureaBags = 0;
+      let dapBags = 0;
+      let mopBags = 0;
+      let zincKg = 0;
+      let costEst = 0;
+
+      // Crop specific standard N-P-K benchmarks per acre in India
+      if (crop === 'wheat') {
+        ureaBags = acres * 2.2;
+        dapBags = acres * 1.0;
+        mopBags = acres * 0.7;
+        zincKg = acres * 5;
+      } else if (crop === 'paddy') {
+        ureaBags = acres * 2.5;
+        dapBags = acres * 1.2;
+        mopBags = acres * 0.8;
+        zincKg = acres * 8; // Paddy needs more Zinc
+      } else if (crop === 'sugarcane') {
+        ureaBags = acres * 5.0;
+        dapBags = acres * 2.5;
+        mopBags = acres * 2.0;
+        zincKg = acres * 12;
+      } else if (crop === 'potato') {
+        ureaBags = acres * 3.0;
+        dapBags = acres * 2.0;
+        mopBags = acres * 1.8;
+        zincKg = acres * 6;
+      } else {
+        // General Vegetables / Mustard / Cotton
+        ureaBags = acres * 1.8;
+        dapBags = acres * 0.9;
+        mopBags = acres * 0.6;
+        zincKg = acres * 4;
+      }
+
+      if (method === 'organic') {
+        document.getElementById('resUrea').textContent = `${(acres * 12).toFixed(1)} qtl Gobar Khad`;
+        document.getElementById('resDAP').textContent = `${(acres * 4).toFixed(1)} Bags Vermicompost`;
+        document.getElementById('resPotash').textContent = `${(acres * 150).toFixed(0)} Ltr Jeevamrut`;
+        document.getElementById('resZinc').textContent = `${(acres * 25).toFixed(0)} kg Neem Cake`;
+        costEst = acres * 1800;
+      } else {
+        document.getElementById('resUrea').textContent = `${ureaBags.toFixed(1)} Bags (45kg)`;
+        document.getElementById('resDAP').textContent = `${dapBags.toFixed(1)} Bags (50kg)`;
+        document.getElementById('resPotash').textContent = `${mopBags.toFixed(1)} Bags (50kg)`;
+        document.getElementById('resZinc').textContent = `${zincKg.toFixed(0)} kg`;
+        // Subsidized Indian fertilizer pricing: Urea ~₹266, DAP ~₹1350, MOP ~₹1700
+        costEst = Math.round((ureaBags * 266.5) + (dapBags * 1350) + (mopBags * 1700) + (zincKg * 45));
+      }
+
+      document.getElementById('resEstimatedCost').textContent = `₹${costEst.toLocaleString('en-IN')} total`;
+    }
+
+    // Kisan Sell Portal: Submit New Crop Listing
+    function handleNewProduceSubmission(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('newProdName').value;
+      const category = document.getElementById('newProdCategory').value;
+      const price = parseFloat(document.getElementById('newProdPrice').value);
+      const unit = document.getElementById('newProdUnit').value;
+      const stock = parseInt(document.getElementById('newProdStock').value);
+      const farmer = document.getElementById('newProdFarmer').value;
+      const location = document.getElementById('newProdLocation').value;
+      const desc = document.getElementById('newProdDesc').value || "Farm-fresh directly harvested produce.";
+      const emoji = document.getElementById('newProdEmoji').value;
+      const badge = document.getElementById('newProdBadge').value;
+
+      const newCrop = {
+        id: Date.now(),
+        name,
+        category,
+        price,
+        unit,
+        stock,
+        farmer,
+        location,
+        desc,
+        emoji,
+        badge
+      };
+
+      APP_STATE.products.unshift(newCrop);
+      document.getElementById('formAddProduce').reset();
+
+      renderProductCatalog();
+      renderDashboardData();
+      showToast("🌾 Crop Published!", `${name} is now live in Bharat Mandi at ₹${price}/${unit}`);
+      navigateTo('home');
+    }
+
+    // User Authentication & Demo Switchers
+    function setAuthTab(tab) {
+      const isLogin = tab === 'login';
+      document.getElementById('formLogin').classList.toggle('hidden', !isLogin);
+      document.getElementById('formRegister').classList.toggle('hidden', isLogin);
+
+      document.getElementById('authTabLogin').classList.toggle('border-emerald-600', isLogin);
+      document.getElementById('authTabLogin').classList.toggle('text-emerald-700', isLogin);
+      document.getElementById('authTabLogin').classList.toggle('text-stone-500', !isLogin);
+
+      document.getElementById('authTabRegister').classList.toggle('border-emerald-600', !isLogin);
+      document.getElementById('authTabRegister').classList.toggle('text-emerald-700', !isLogin);
+      document.getElementById('authTabRegister').classList.toggle('text-stone-500', isLogin);
+    }
+
+    function toggleFarmFields(isFarmer) {
+      document.getElementById('farmSpecificFields').classList.toggle('hidden', !isFarmer);
+    }
+    async function handleUserLogin(e) {
+  e.preventDefault();
+
+  const identifier = document
+    .getElementById('loginIdentifier')
+    .value
+    .trim()
+    .toLowerCase();
+
+  const password = document.getElementById('loginPass').value;
+  const selectedRole =
+    document.querySelector('input[name="loginUserRole"]:checked')?.value ||
+    'farmer';
+
+  if (!identifier || !password) {
+    showToast(
+      'Login failed',
+      'Please enter email and password.',
+      'error'
+    );
+    return;
+  }
+
+  try {
+    // 1. Login with Supabase
+    const { data: authData, error: authError } =
+      await db.auth.signInWithPassword({
+        email: identifier,
+        password: password
+      });
+
+    if (authError) {
+      console.error('Supabase login error:', authError);
+
+      showToast(
+        'Login failed',
+        authError.message,
+        'error'
+      );
+
+      return;
+    }
+
+    const authUser = authData.user;
+
+    // 2. Get the user's profile from Supabase
+    const { data: profileData, error: profileError } =
+      await db
+        .from('profiles')
+        .select('id, full_name, phone, role, state, village')
+        .eq('id', authUser.id)
+        .maybeSingle();
+
+    if (profileError) {
+      console.error('Profile loading error:', profileError);
+    }
+
+    // 3. Get the REAL name of the logged-in user
+    const userName =
+      profileData?.full_name ||
+      authUser.user_metadata?.full_name ||
+      authUser.user_metadata?.name ||
+      authUser.email?.split('@')[0] ||
+      'User';
+
+    const userRole =
+      profileData?.role ||
+      authUser.user_metadata?.role ||
+      selectedRole;
+
+    const userLocation =
+      [profileData?.village, profileData?.state]
+        .filter(Boolean)
+        .join(', ') || 'India';
+
+    // 4. Store the REAL logged-in user
+    APP_STATE.currentUser = {
+      id: authUser.id,
+      name: userName,
+      email: authUser.email || identifier,
+      phone: profileData?.phone || '',
+      role: userRole,
+      location: userLocation
+    };
+
+    // 5. Save the same user to localStorage
+    localStorage.setItem(
+      'kisan_user',
+      JSON.stringify(APP_STATE.currentUser)
+    );
+
+    localStorage.setItem(
+      'farmerMarketCurrentUser',
+      JSON.stringify(APP_STATE.currentUser)
+    );
+
+    // 6. Update the website
+    updateUserNavUI();
+    renderDashboardData();
+
+    closeAuthModal();
+
+    showToast(
+      'Login successful',
+      `Welcome, ${userName}!`
+    );
+
+    navigateTo('dashboard');
+
+  } catch (error) {
+    console.error('Login error:', error);
+
+    showToast(
+      'Login failed',
+      'Unable to load your profile. Please try again.',
+      'error'
+    );
+  }
+}
+    async function handleUserRegister(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('regName').value.trim();
+  const phone = document.getElementById('regPhone').value.trim();
+  const email = document.getElementById('regEmail').value.trim().toLowerCase();
+  const password = document.getElementById('regPassword').value;
+  const role = document.querySelector(
+    'input[name="regUserRole"]:checked'
+  )?.value || 'farmer';
+  const state = document.getElementById('regState')?.value || '';
+  const village = document.getElementById('regVillage')?.value.trim() || '';
+
+  if (!name || !email || !password) {
+    showToast(
+      'Registration failed',
+      'Please complete all required fields.',
+      'error'
+    );
+    return;
+  }
+
+  if (password.length < 6) {
+    showToast(
+      'Registration failed',
+      'Password must contain at least 6 characters.',
+      'error'
+    );
+    return;
+  }
+
+  try {
+    const { data: authData, error: authError } =
+      await db.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: name,
+            phone,
+            role
+          }
+        }
+      });
+
+    if (authError) {
+      showToast('Registration failed', authError.message, 'error');
+      return;
+    }
+
+    if (!authData.user) {
+      showToast(
+        'Registration failed',
+        'Supabase did not create the user account.',
+        'error'
+      );
+      return;
+    }
+
+    // If email confirmation is disabled, a session is returned immediately.
+    // If confirmation is enabled, the profile is created after confirmation
+    // by the profile-sync function below.
+    if (authData.session) {
+     const { error: profileError } = await db
+      .from('profiles')
+      .upsert({
+        id: authData.user.id,
+        full_name: name,
+        phone: phone,
+        role: document.querySelector('input[name="regUserRole"]:checked')?.value || 'farmer',
+        state: document.getElementById('regState')?.value || '',
+        village: document.getElementById('regVillage')?.value.trim() || ''
+      });
+
+      if (profileError) {
+        console.error('Profile save error:', profileError);
+        showToast(
+          'Registration incomplete',
+          'The account was created, but the profile could not be saved.',
+          'error'
+        );
+        return;
+      }
+
+      APP_STATE.currentUser = {
+        id: authData.user.id,
+        name,
+        email,
+        phone,
+        role,
+        location: [village, state].filter(Boolean).join(', ') || 'India'
+      };
+
+      localStorage.setItem(
+        'kisan_user',
+        JSON.stringify(APP_STATE.currentUser)
+      );
+
+      updateUserNavUI();
+      renderDashboardData();
+      closeAuthModal();
+
+      showToast('Registration successful', `Welcome, ${name}!`);
+      navigateTo('dashboard');
+    } else {
+      showToast(
+        'Check your email',
+        'Confirm your email address, then log in.'
+      );
+    }
+
+    document.getElementById('formRegister').reset();
+  } catch (error) {
+    console.error('Registration error:', error);
+    showToast(
+      'Registration failed',
+      'Something went wrong. Please try again.',
+      'error'
+    );
+  }
+}
+    function quickDemoLogin(role) {
+      if (role === 'farmer') {
+        APP_STATE.currentUser = {
+          name: "Sardar Ramesh Singh",
+          email: "ramesh.kisan@punjab.in",
+          role: "farmer",
+          location: "Khanna Mandi, Punjab"
+        };
+      } else {
+        APP_STATE.currentUser = {
+          name: "Pooja Mehta",
+          email: "pooja.retail@delhi.com",
+          role: "buyer",
+          location: "Connaught Place, New Delhi"
+        };
+      }
+
+      localStorage.setItem('kisan_user', JSON.stringify(APP_STATE.currentUser));
+      updateUserNavUI();
+      renderDashboardData();
+      showToast("Demo Active", `Switched profile to ${APP_STATE.currentUser.name} (${role.toUpperCase()})`);
+      navigateTo('dashboard');
+    }
+
+    function fillDemoCredentials(role) {
+      setAuthTab('login');
+      if (role === 'farmer') {
+        document.querySelector('input[name="loginUserRole"][value="farmer"]').checked = true;
+        document.getElementById('loginIdentifier').value = "ramesh.kisan@punjab.in";
+        document.getElementById('loginPass').value = "kisan1234";
+      } else {
+        document.querySelector('input[name="loginUserRole"][value="buyer"]').checked = true;
+        document.getElementById('loginIdentifier').value = "ananya.buyer@delhi.in";
+        document.getElementById('loginPass').value = "buyer1234";
+      }
+    }
+
+  async function logoutUser() {
+  const { error } = await db.auth.signOut();
+
+  if (error) {
+    console.error('Logout error:', error);
+    showToast('Logout failed', error.message, 'error');
+    return;
+  }
+
+  APP_STATE.currentUser = null;
+  localStorage.removeItem('kisan_user');
+
+  updateUserNavUI();
+
+  document
+    .getElementById('userDropdownMenu')
+    ?.classList.add('hidden');
+
+  showToast('Logged out', 'You have been safely logged out.');
+  navigateTo('home');
+}
+
+    function updateUserNavUI() {
+      const guestBtns = document.getElementById('guestButtons');
+      const profileBtn = document.getElementById('userProfileButton');
+
+      if (APP_STATE.currentUser) {
+        guestBtns.classList.add('hidden');
+        profileBtn.classList.remove('hidden');
+        document.getElementById('userNavName').textContent = APP_STATE.currentUser.name;
+        document.getElementById('userNavRole').textContent = APP_STATE.currentUser.role === 'farmer' ? 'Kisan (Farmer)' : 'Grahak (Buyer)';
+        document.getElementById('dropdownUserEmail').textContent = APP_STATE.currentUser.email;
+        document.getElementById('userAvatarBadge').textContent = APP_STATE.currentUser.name.charAt(0).toUpperCase();
+      } else {
+        guestBtns.classList.remove('hidden');
+        profileBtn.classList.add('hidden');
+      }
+    }
+
+    // Dashboard Data Rendering
+    function renderDashboardData() {
+      const ordersContainer = document.getElementById('dashboardOrdersContainer');
+      const inventoryContainer = document.getElementById('farmerProduceInventory');
+
+    if (APP_STATE.currentUser) {
+        document.getElementById('dashUserName').textContent = APP_STATE.currentUser.name;
+        document.getElementById('dashUserRoleBadge').textContent = APP_STATE.currentUser.role.toUpperCase();
+        document.getElementById('dashUserLocation').innerHTML = `<i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> ${APP_STATE.currentUser.location} • Verified Direct Mandi Member`;
+        document.getElementById('dashAvatarLarge').textContent = APP_STATE.currentUser.name.charAt(0).toUpperCase();
+      }
+      // Orders rendering
+      ordersContainer.innerHTML = APP_STATE.orders.map(order => `
+        <div class="p-3.5 bg-stone-50 rounded-2xl border border-stone-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-black text-stone-900">${order.id}</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${order.status.includes('Delivered') ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}">
+                ${order.status}
+              </span>
+            </div>
+            <p class="text-stone-600 mt-1 font-medium">${order.cropItems}</p>
+            <p class="text-[11px] text-stone-400">Buyer: ${order.buyerName} • Route: ${order.destination}</p>
+          </div>
+
+          <div class="text-right flex-shrink-0">
+            <span class="text-sm font-black text-emerald-700">₹${order.totalAmount.toLocaleString('en-IN')}</span>
+            <p class="text-[10px] text-stone-400">${order.date}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Farmer Produce Inventory
+      inventoryContainer.innerHTML = APP_STATE.products.slice(0, 4).map(prod => `
+        <div class="p-3 bg-stone-50 rounded-2xl border border-stone-200/70 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl">${prod.emoji}</span>
+            <div>
+              <h5 class="font-bold text-stone-900">${prod.name}</h5>
+              <p class="text-[10px] text-stone-500">Rate: ₹${prod.price}/${prod.unit} • Live Stock: ${prod.stock} ${prod.unit}</p>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-lg text-[10px] font-bold">Live in Bazaar</span>
+        </div>
+      `).join('');
+    }
+
+    // Modal & Drawer Toggles
+    function toggleSearch() {
+      document.getElementById('searchBarDropdown').classList.toggle('hidden');
+    }
+
+    function toggleCart() {
+      document.getElementById('cartModal').classList.toggle('hidden');
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('hidden');
+    }
+
+    function toggleUserDropdown() {
+      document.getElementById('userDropdownMenu').classList.toggle('hidden');
+    }
+
+    function openAuthModal(mode) {
+      setAuthTab(mode);
+      document.getElementById('authModal').classList.remove('hidden');
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+    }
+
+    // Toast Messenger
+    function showToast(title, msg, type = 'success') {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastMessage').textContent = msg;
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+    
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://bnnoqiitaanskwoaruri.supabase.co";
+const SUPABASE_KEY = "sb_publishable_vuiVuBuR7L_GbX11DKDnpg_UXUvYY54";
+
+const db = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+</script>
+  <script>
+   const KISAN_USER_KEY = 'farmerMarketCurrentUser';
+
+   function setLoggedInUser(user) {
+    if (!user) return;
+
+    const normalizedUser = {
+      name: user.name || user.fullName || user.email || 'User',
+      email: user.email || user.identifier || '',
+      identifier: user.identifier || user.email || '',
+      role: user.role === 'buyer' ? 'buyer' : 'farmer'
+    };
+
+    localStorage.setItem(KISAN_USER_KEY, JSON.stringify(normalizedUser));
+    updateLoggedInUserUI(normalizedUser);
+  }
+
+  function updateLoggedInUserUI(user) {
+    if (!user) {
+      const guestButtons = document.getElementById('guestButtons');
+      const userProfileButton = document.getElementById('userProfileButton');
+
+      if (guestButtons) guestButtons.classList.remove('hidden');
+      if (userProfileButton) userProfileButton.classList.add('hidden');
+      return;
+    }
+
+    const name = String(user.name || 'User').trim();
+    const roleLabel = user.role === 'buyer' ? 'Buyer / Vyapari' : 'Kisan (Farmer)';
+    const email = user.email || user.identifier || '';
+    const initial = name ? name.charAt(0).toUpperCase() : 'U';
+
+    const avatar = document.getElementById('userAvatarBadge');
+    const navName = document.getElementById('userNavName');
+    const navRole = document.getElementById('userNavRole');
+    const emailDisplay = document.getElementById('dropdownUserEmail');
+
+    if (avatar) avatar.textContent = initial;
+    if (navName) navName.textContent = name;
+    if (navRole) navRole.textContent = roleLabel;
+    if (emailDisplay) emailDisplay.textContent = email;
+
+    const guestButtons = document.getElementById('guestButtons');
+    const userProfileButton = document.getElementById('userProfileButton');
+
+    if (guestButtons) guestButtons.classList.add('hidden');
+    if (userProfileButton) userProfileButton.classList.remove('hidden');
+  }
+
+  function restoreLoggedInUser() {
+    try {
+      const saved = localStorage.getItem(KISAN_USER_KEY);
+      if (!saved) {
+        updateLoggedInUserUI(null);
+        return;
+      }
+
+      const user = JSON.parse(saved);
+      updateLoggedInUserUI(user);
+    } catch (error) {
+      localStorage.removeItem(KISAN_USER_KEY);
+      updateLoggedInUserUI(null);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    restoreLoggedInUser();
+
+    const loginForm = document.getElementById('formLogin');
+    if (loginForm) {
+      loginForm.addEventListener('submit', function (event) {
+        const identifier = document.getElementById('loginIdentifier')?.value?.trim() || '';
+        const role = document.querySelector('input[name="loginUserRole"]:checked')?.value || 'farmer';
+        const rawName = identifier.includes('@')
+          ? identifier.split('@')[0].replace(/[._-]/g, ' ')
+          : (role === 'buyer' ? 'Buyer User' : 'Farmer User');
+
+        const fullName = rawName
+          .split(' ')
+          .filter(Boolean)
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+
+        setLoggedInUser({
+          name: fullName || 'User',
+          email: identifier.includes('@') ? identifier : '',
+          identifier: identifier,
+          role: role
+        });
+      });
+    }
+
+    const registerForm = document.getElementById('formRegister');
+    if (registerForm) {
+      registerForm.addEventListener('submit', function () {
+        const fullName = document.getElementById('regName')?.value?.trim() || 'User';
+        const email = document.getElementById('regEmail')?.value?.trim() || '';
+        const phone = document.getElementById('regPhone')?.value?.trim() || '';
+        const role = document.querySelector('input[name="regUserRole"]:checked')?.value || 'farmer';
+
+        setLoggedInUser({
+          name: fullName,
+          email: email,
+          identifier: email || phone,
+          role: role
+        });
+      });
+    }
+  });
+</script>
+<script>
+  history.pushState({ stay: true }, "", location.href);
+
+  window.addEventListener("popstate", function () {
+    history.pushState({ stay: true }, "", location.href);
+  });
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+// Secure Razorpay checkout: order creation and verification happen on Supabase Edge Functions.
+// Never mark an order confirmed from the browser's payment callback alone.
+const PAYMENT_FUNCTION_BASE = `${SUPABASE_URL}/functions/v1`;
+let checkoutInProgress = false;
+
+async function callPaymentFunction(functionName, payload) {
+  const response = await fetch(`${PAYMENT_FUNCTION_BASE}/${functionName}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`
+    },
+    body: JSON.stringify(payload)
+  });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(result.error || result.message || `Payment service failed (${response.status})`);
+  return result;
+}
+
+async function startRazorpayPayment() {
+  if (checkoutInProgress) return;
+  if (!Array.isArray(APP_STATE.cart) || APP_STATE.cart.length === 0) {
+    showToast('Basket is empty', 'Please add produce before checkout.', 'warning');
+    return;
+  }
+  if (typeof window.Razorpay !== 'function') {
+    showToast('Payment unavailable', 'Secure payment checkout did not load. Refresh the page and try again.', 'warning');
+    return;
+  }
+
+  const payButton = document.getElementById('payNowButton');
+  const payButtonText = document.getElementById('payNowButtonText');
+  const oldButtonText = payButtonText ? payButtonText.textContent : '';
+  checkoutInProgress = true;
+  if (payButton) payButton.disabled = true;
+  if (payButtonText) payButtonText.textContent = 'Preparing secure payment…';
+
+  // Send only product IDs and quantities. The Edge Function calculates prices from its trusted catalogue.
+  const items = APP_STATE.cart.map(item => ({ id: String(item.id), quantity: Number(item.quantity) }));
+  const buyer = {
+    name: APP_STATE.currentUser?.name || 'Guest Buyer',
+    email: APP_STATE.currentUser?.email || '',
+    destination: APP_STATE.currentUser?.location || 'Delhi-NCR Mandi Express'
+  };
+
+  try {
+    const created = await callPaymentFunction('create-payment-order', { items, buyer });
+    if (!created.order_id || !created.key_id || !Number.isInteger(Number(created.amount))) {
+      throw new Error('Payment service returned an invalid order. No order has been confirmed.');
+    }
+
+    const razorpay = new Razorpay({
+      key: created.key_id,
+      amount: Number(created.amount),
+      currency: created.currency || 'INR',
+      name: 'Farmer Marketplace',
+      description: 'Farm produce purchase',
+      order_id: created.order_id,
+      prefill: { name: buyer.name, email: buyer.email },
+      notes: { platform: 'Farmer Marketplace' },
+      theme: { color: '#047857' },
+      modal: {
+        ondismiss: function () {
+          checkoutInProgress = false;
+          if (payButton) payButton.disabled = false;
+          if (payButtonText) payButtonText.textContent = oldButtonText || 'Pay Securely with UPI / Card';
+        }
+      },
+      handler: async function (paymentResponse) {
+        if (payButtonText) payButtonText.textContent = 'Verifying payment…';
+        try {
+          // Server verifies signature and fetches the payment from Razorpay before confirming.
+          const verified = await callPaymentFunction('verify-payment', {
+            razorpay_order_id: paymentResponse.razorpay_order_id,
+            razorpay_payment_id: paymentResponse.razorpay_payment_id,
+            razorpay_signature: paymentResponse.razorpay_signature
+          });
+          if (verified.status !== 'confirmed' || verified.payment_status !== 'paid') {
+            throw new Error('Payment is not verified yet. The order has not been confirmed.');
+          }
+
+          const order = verified.order || {};
+          APP_STATE.orders.unshift({
+            id: order.order_number || order.id || `ORD-${String(paymentResponse.razorpay_order_id).slice(-8)}`,
+            buyerName: order.buyer_name || buyer.name,
+            cropItems: (order.items || APP_STATE.cart.map(c => ({ name: c.name, quantity: c.quantity, unit: c.unit })))
+              .map(item => `${item.name} (${item.quantity} ${item.unit || 'unit'})`).join(', '),
+            totalAmount: Number(order.total_amount ?? (Number(created.amount) / 100)),
+            date: 'Just Now',
+            status: 'Paid • Confirmed',
+            destination: order.destination || buyer.destination,
+            paymentId: paymentResponse.razorpay_payment_id
+          });
+          APP_STATE.cart = [];
+          updateCartUI();
+          if (!document.getElementById('cartModal').classList.contains('hidden')) toggleCart();
+          renderDashboardData();
+          showToast('Payment verified!', `Your order is confirmed. Payment ID: ${paymentResponse.razorpay_payment_id}`);
+        } catch (verificationError) {
+          console.error('Payment verification error:', verificationError);
+          showToast('Payment verification pending', 'Do not pay again yet. Your order is NOT marked confirmed; contact support with your Razorpay payment ID.', 'warning');
+        } finally {
+          checkoutInProgress = false;
+          if (payButton) payButton.disabled = false;
+          if (payButtonText) payButtonText.textContent = oldButtonText || 'Pay Securely with UPI / Card';
+        }
+      }
+    });
+    razorpay.on('payment.failed', function (failure) {
+      console.warn('Razorpay payment failed:', failure?.error?.description || 'Payment failed');
+      showToast('Payment not completed', 'No order was confirmed. You can retry checkout.', 'warning');
+      checkoutInProgress = false;
+      if (payButton) payButton.disabled = false;
+      if (payButtonText) payButtonText.textContent = oldButtonText || 'Pay Securely with UPI / Card';
+    });
+    razorpay.open();
+  } catch (error) {
+    console.error('Checkout error:', error);
+    showToast('Checkout could not start', error.message || 'Please try again later.', 'warning');
+    checkoutInProgress = false;
+    if (payButton) payButton.disabled = false;
+    if (payButtonText) payButtonText.textContent = oldButtonText || 'Pay Securely with UPI / Card';
+  }
+}
+</script>
+
+
+<script>
+// Integrated product administration. The Supabase database RLS policies are the security boundary.
+const ADMIN_PRODUCT_CATEGORIES = new Set(['grains','fruits','vegetables','dairy','fertilizers','other']);
+let adminProductCache = [];
+let adminSessionUser = null;
+function escapeProductHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function productEmoji(category) {
+  return ({grains:'🌾',fruits:'🥭',vegetables:'🥬',dairy:'🥛',fertilizers:'🌱',other:'🧺'})[String(category||'other').toLowerCase()] || '🌱';
+}
+function mapDatabaseProduct(row) {
+  const category = ADMIN_PRODUCT_CATEGORIES.has(String(row.category||'').toLowerCase()) ? String(row.category).toLowerCase() : 'other';
+  return { id: row.id, name: row.name || 'Unnamed product', category, price: Number(row.price||0), unit: row.unit || 'kg', stock: Number(row.stock||0),
+    farmer: row.farmer_name || row.farmer || 'Verified Farmer', location: row.location || 'India', emoji: productEmoji(category), badge: row.badge || 'Direct Harvest',
+    desc: row.description || row.desc || 'Fresh produce directly from the farm.', image_url: row.image_url || null };
+}
+async function loadMarketplaceProducts() {
+  try {
+    const {data,error} = await db.from('products').select('*').order('created_at',{ascending:false});
+    if (error) throw error;
+    APP_STATE.products = (data || []).map(mapDatabaseProduct);
+    renderProductCatalog();
+    updateCartUI();
+    if (typeof renderDashboardData === 'function') renderDashboardData();
+    return true;
+  } catch (error) {
+    console.warn('Could not load products table; keeping built-in demo products.', error.message || error);
+    return false;
+  }
+}
+function showAdminNotice(text, isError=false) {
+  const el=document.getElementById('adminNotice'); if(!el) return;
+  el.textContent=text; el.className='mb-5 p-4 rounded-xl text-sm font-semibold '+(isError?'bg-red-50 text-red-800 border border-red-200':'bg-emerald-50 text-emerald-800 border border-emerald-200');
+}
+function clearAdminNotice() { const el=document.getElementById('adminNotice'); if(el){el.textContent='';el.className='hidden mb-5 p-4 rounded-xl text-sm font-semibold';} }
+async function openAdminPanel() {
+  navigateTo('admin');
+  clearAdminNotice();
+  const {data,error}=await db.auth.getSession();
+  if(error){showAdminNotice('Could not check sign-in status: '+error.message,true);return;}
+  await handleAdminSession(data.session);
+}
+async function handleAdminSession(session) {
+  adminSessionUser=session?.user || null;
+  const loginCard=document.getElementById('adminLoginCard'), workspace=document.getElementById('adminWorkspace'), signout=document.getElementById('adminSignOutBtn');
+  if(!adminSessionUser){loginCard.classList.remove('hidden');workspace.classList.add('hidden');signout.classList.add('hidden');return;}
+  if(adminSessionUser.app_metadata?.role !== 'admin'){
+    await db.auth.signOut(); adminSessionUser=null; loginCard.classList.remove('hidden');workspace.classList.add('hidden');signout.classList.add('hidden');
+    showAdminNotice('Access denied. This account is not authorized as an admin. Ask the project owner to assign app_metadata.role = admin.',true);return;
+  }
+  loginCard.classList.add('hidden');workspace.classList.remove('hidden');signout.classList.remove('hidden');
+  document.getElementById('adminSignedInAs').textContent=adminSessionUser.email || 'Admin';
+  await loadAdminProducts();
+}
+async function adminSignOut() {
+  const {error}=await db.auth.signOut();
+  if(error){showAdminNotice('Sign out failed: '+error.message,true);return;}
+  adminSessionUser=null; await handleAdminSession(null); showAdminNotice('Signed out.');
+}
+async function loadAdminProducts() {
+  if(!adminSessionUser || adminSessionUser.app_metadata?.role!=='admin') return;
+  const rows=document.getElementById('adminProductRows'); rows.innerHTML='<tr><td colspan="5" class="py-5 text-stone-500">Loading products…</td></tr>';
+  const {data,error}=await db.from('products').select('*').order('created_at',{ascending:false});
+  if(error){rows.innerHTML='<tr><td colspan="5" class="py-5 text-red-700">Could not load products.</td></tr>';showAdminNotice('Product load failed: '+error.message,true);return;}
+  adminProductCache=data||[]; renderAdminProductRows();
+  showAdminNotice(`Loaded ${adminProductCache.length} product(s).`);
+}
+function renderAdminProductRows() {
+  const query=(document.getElementById('adminProductSearch').value||'').trim().toLowerCase();
+  const matches=adminProductCache.filter(p=>`${p.name||''} ${p.category||''}`.toLowerCase().includes(query));
+  const rows=document.getElementById('adminProductRows');
+  if(!matches.length){rows.innerHTML=`<tr><td colspan="5" class="py-5 text-stone-500">${query?'No matching products.':'No products yet. Add your first product above.'}</td></tr>`;return;}
+  rows.innerHTML=matches.map(p=>`<tr class="border-b border-stone-100"><td class="py-3 px-2"><div class="flex items-center gap-3">${p.image_url?`<img src="${escapeProductHTML(p.image_url)}" alt="" class="w-11 h-11 rounded-lg object-cover" onerror="this.style.display='none'">`:`<span class="w-11 h-11 rounded-lg bg-emerald-50 grid place-items-center text-xl">${productEmoji(p.category)}</span>`}<div><div class="font-bold text-stone-900">${escapeProductHTML(p.name)}</div><div class="text-[11px] text-stone-500">${escapeProductHTML(p.unit||'')}</div></div></div></td><td class="py-3 px-2">${escapeProductHTML(p.category||'other')}</td><td class="py-3 px-2 font-bold">₹${Number(p.price||0).toLocaleString('en-IN')}</td><td class="py-3 px-2">${escapeProductHTML(p.stock??0)}</td><td class="py-3 px-2"><div class="flex gap-2"><button type="button" data-admin-edit="${escapeProductHTML(p.id)}" class="px-3 py-2 rounded-lg bg-stone-100 hover:bg-stone-200 text-xs font-bold">Edit</button><button type="button" data-admin-delete="${escapeProductHTML(p.id)}" class="px-3 py-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold">Delete</button></div></td></tr>`).join('');
+  rows.querySelectorAll('[data-admin-edit]').forEach(b=>b.addEventListener('click',()=>editAdminProduct(b.dataset.adminEdit)));
+  rows.querySelectorAll('[data-admin-delete]').forEach(b=>b.addEventListener('click',()=>deleteAdminProduct(b.dataset.adminDelete)));
+}
+function editAdminProduct(id) {
+  const p=adminProductCache.find(x=>String(x.id)===String(id)); if(!p)return;
+  document.getElementById('adminProductId').value=p.id;
+  document.getElementById('adminProductName').value=p.name||'';
+  document.getElementById('adminProductCategory').value=ADMIN_PRODUCT_CATEGORIES.has(String(p.category||'').toLowerCase())?String(p.category).toLowerCase():'other';
+  document.getElementById('adminProductPrice').value=p.price??0; document.getElementById('adminProductUnit').value=p.unit||'kg'; document.getElementById('adminProductStock').value=p.stock??0;
+  document.getElementById('adminProductFarmer').value=p.farmer_name||p.farmer||''; document.getElementById('adminProductLocation').value=p.location||'';
+  document.getElementById('adminProductImage').value=p.image_url||''; document.getElementById('adminProductBadge').value=p.badge||'Direct Harvest'; document.getElementById('adminProductDescription').value=p.description||p.desc||'';
+  document.getElementById('adminFormHeading').textContent='Edit product';document.getElementById('adminSaveProductBtn').innerHTML='<i class="fa-solid fa-floppy-disk mr-2"></i>Update product';document.getElementById('adminCancelEditBtn').classList.remove('hidden');
+  document.getElementById('adminProductForm').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function resetAdminProductForm() {
+  document.getElementById('adminProductForm').reset();document.getElementById('adminProductId').value='';document.getElementById('adminProductStock').value='0';
+  document.getElementById('adminFormHeading').textContent='Add a product';document.getElementById('adminSaveProductBtn').innerHTML='<i class="fa-solid fa-floppy-disk mr-2"></i>Save product';document.getElementById('adminCancelEditBtn').classList.add('hidden');
+}
+async function deleteAdminProduct(id) {
+  if(!adminSessionUser || adminSessionUser.app_metadata?.role!=='admin'){showAdminNotice('Admin access is required.',true);return;}
+  const p=adminProductCache.find(x=>String(x.id)===String(id));if(!p||!confirm(`Delete “${p.name}”? This cannot be undone.`))return;
+  const {error}=await db.from('products').delete().eq('id',id);
+  if(error){showAdminNotice('Delete failed: '+error.message,true);return;}
+  if(String(document.getElementById('adminProductId').value)===String(id))resetAdminProductForm();
+  showAdminNotice('Product deleted.');await loadAdminProducts();await loadMarketplaceProducts();
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  // Read the database catalogue; if the table is not configured yet, the existing demo catalogue remains visible.
+  await loadMarketplaceProducts();
+  const loginForm=document.getElementById('adminLoginForm');
+  loginForm.addEventListener('submit',async e=>{
+    e.preventDefault();clearAdminNotice();
+    const btn=document.getElementById('adminLoginBtn');btn.disabled=true;btn.textContent='Signing in…';
+    try {
+      const {data,error}=await db.auth.signInWithPassword({email:document.getElementById('adminEmail').value.trim(),password:document.getElementById('adminPassword').value});
+      if(error)throw error;
+      await handleAdminSession(data.session);
+    } catch(err){showAdminNotice('Sign in failed: '+err.message,true);}
+    finally{btn.disabled=false;btn.textContent='Sign in securely';}
+  });
+  document.getElementById('adminProductForm').addEventListener('submit',async e=>{
+    e.preventDefault();clearAdminNotice();
+    if(!adminSessionUser||adminSessionUser.app_metadata?.role!=='admin'){showAdminNotice('Admin sign-in is required.',true);return;}
+    const price=Number(document.getElementById('adminProductPrice').value),stock=Number(document.getElementById('adminProductStock').value);
+    if(!Number.isFinite(price)||price<0||!Number.isInteger(stock)||stock<0){showAdminNotice('Price must be non-negative and stock must be a whole number of zero or more.',true);return;}
+    const payload={name:document.getElementById('adminProductName').value.trim(),category:document.getElementById('adminProductCategory').value,price,unit:document.getElementById('adminProductUnit').value.trim(),stock,
+      farmer_name:document.getElementById('adminProductFarmer').value.trim()||null,location:document.getElementById('adminProductLocation').value.trim()||null,image_url:document.getElementById('adminProductImage').value.trim()||null,badge:document.getElementById('adminProductBadge').value,description:document.getElementById('adminProductDescription').value.trim()||null};
+    if(!payload.name||!payload.unit){showAdminNotice('Product name and unit are required.',true);return;}
+    const btn=document.getElementById('adminSaveProductBtn');btn.disabled=true;
+    try{
+      const id=document.getElementById('adminProductId').value;
+      let result;
+      if(id) result=await db.from('products').update(payload).eq('id',id).select().single();
+      else result=await db.from('products').insert(payload).select().single();
+      if(result.error)throw result.error;
+      showAdminNotice(id?'Product updated successfully.':'Product added successfully.');resetAdminProductForm();await loadAdminProducts();await loadMarketplaceProducts();
+    }catch(err){showAdminNotice('Save failed: '+err.message,true);}
+    finally{btn.disabled=false;}
+  });
+  document.getElementById('adminProductSearch').addEventListener('input',renderAdminProductRows);
+  const {data}=await db.auth.getSession();
+  if(data?.session?.user?.app_metadata?.role==='admin') { adminSessionUser=data.session.user; }
+});
+</script>
+
+</body>
+</html>
